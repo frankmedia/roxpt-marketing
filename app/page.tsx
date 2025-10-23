@@ -9,9 +9,12 @@ export default function Home() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   const carouselImages = [
-    '/images/circuit.png',
-    '/images/overview-days.png',
-    '/images/warmup.png'
+    '/images/home.png',
+    '/images/day1.png',
+    '/images/day1a.png',
+    '/images/circuit1.png',
+    '/images/calf.png',
+    '/images/score.png'
   ];
   const [slide, setSlide] = useState(0);
   useEffect(() => {
@@ -19,7 +22,7 @@ export default function Home() {
       setSlide((s) => (s + 1) % carouselImages.length);
     }, 3000);
     return () => clearInterval(id);
-  }, []);
+  }, [carouselImages.length]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

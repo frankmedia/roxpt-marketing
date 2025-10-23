@@ -91,7 +91,7 @@ export default function Pricing() {
 
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 px-4">
-        <div className="container mx-auto max-w-6xl">
+        <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-16">
             <Breadcrumbs />
             

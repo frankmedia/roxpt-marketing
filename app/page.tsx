@@ -117,7 +117,7 @@ export default function Home() {
 
       {/* Features Preview */}
       <section className="py-24 px-4 bg-zinc-900/50">
-        <div className="container mx-auto max-w-6xl">
+        <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Everything you need to <span className="text-[#FFCC00]">dominate HYROX</span>
@@ -170,7 +170,7 @@ export default function Home() {
 
       {/* Stats Section */}
       <section className="py-24 px-4 bg-black">
-        <div className="container mx-auto max-w-6xl">
+        <div className="container mx-auto max-w-4xl">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { value: '500+', label: 'Athletes Training' },

@@ -142,14 +142,14 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative overflow-hidden rounded-xl">
+            <div className="relative overflow-visible rounded-xl lg:w-[175%] lg:left-1/2 lg:-translate-x-1/2">
               <div className="relative aspect-[3/4] lg:aspect-[1/2] bg-black">
                 {carouselImages.map((src, i) => (
                   <img
                     key={src}
                     src={src}
                     alt="App preview"
-                    className={`absolute top-0 left-1/2 -translate-x-1/2 w-auto h-auto max-w-full max-h-full object-contain transition-opacity duration-700 ${i === slide ? 'opacity-100' : 'opacity-0'}`}
+                    className={`absolute inset-0 m-auto left-1/2 -translate-x-1/2 w-full h-full object-contain transition-opacity duration-700 ${i === slide ? 'opacity-100' : 'opacity-0'}`}
                   />
                 ))}
               </div>

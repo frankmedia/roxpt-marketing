@@ -97,14 +97,64 @@ export default function Science() {
           <div className="p-6 bg-zinc-900/50 rounded-xl border border-zinc-800">
             <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
               <Zap className="w-6 h-6 text-[#FFCC00]" />
-              Why It's Different
+              Why It&apos;s Different
             </h3>
             <p className="text-gray-300 mb-4">
-              It's a <span className="text-[#FFCC00] font-semibold">"hybrid" event</span>: part endurance race, part functional fitness. This dual demand requires training that covers both running endurance and functional strength & conditioning.
+              It&apos;s a <span className="text-[#FFCC00] font-semibold">&quot;hybrid&quot; event</span>: part endurance race, part functional fitness. This dual demand requires training that covers both running endurance and functional strength &amp; conditioning.
             </p>
             <div className="p-4 bg-[#FFCC00]/10 border border-[#FFCC00]/30 rounded-lg">
               <p className="font-bold mb-2">Key Challenge:</p>
               <p className="text-gray-300">Maintaining running performance while building functional strength, without letting one interfere with the other.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What is DEKA */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-4xl font-bold mb-8">What is DEKA?</h2>
+
+          <div className="p-8 bg-gradient-to-br from-[#FFCC00]/10 to-transparent border border-[#FFCC00]/30 rounded-xl mb-8">
+            <p className="text-xl text-gray-300 mb-6">
+              DEKA is the decathlon of hybrid racing: <span className="text-[#FFCC00] font-bold">10 functional zones</span> combined with
+              steady cardio efforts. It&apos;s designed so <span className="text-[#FFCC00] font-semibold">all levels</span> can test and celebrate
+              the power of fitness.
+            </p>
+            <div className="flex items-center gap-4 text-2xl font-bold mb-6">
+              <span className="text-white">Zone 1</span>
+              <span className="text-gray-500">→</span>
+              <span className="text-white">...</span>
+              <span className="text-gray-500">→</span>
+              <span className="text-white">Zone 10</span>
+            </div>
+            <p className="text-gray-400 mb-4">
+              Example stations include: ski, row, sled push/pull, box step-overs, lunges, burpees &amp; carries (varies by event).
+            </p>
+            <div className="grid md:grid-cols-2 gap-4 mt-6">
+              <div className="p-4 bg-black/50 rounded-lg border border-zinc-800">
+                <div className="text-[#FFCC00] font-bold text-lg mb-1">Total Zones</div>
+                <div className="text-2xl font-bold">10 functional zones</div>
+              </div>
+              <div className="p-4 bg-black/50 rounded-lg border border-zinc-800">
+                <div className="text-[#FFCC00] font-bold text-lg mb-1">Formats</div>
+                <div className="text-2xl font-bold">FIT • MILE • STRONG</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-6 bg-zinc-900/50 rounded-xl border border-zinc-800">
+            <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+              <Target className="w-6 h-6 text-[#FFCC00]" />
+              Why DEKA appeals
+            </h3>
+            <p className="text-gray-300 mb-4">
+              Standardised testing across all locations makes your results comparable anywhere. Events run indoors with simple
+              layouts, so you can focus on execution and pacing.
+            </p>
+            <div className="p-4 bg-[#FFCC00]/10 border border-[#FFCC00]/30 rounded-lg">
+              <p className="font-bold mb-2">Key Note:</p>
+              <p className="text-gray-300">Choose a format that matches your training block: FIT (10 zones + 5k), MILE (10 zones + 1 mile), STRONG (10 zones only).</p>
             </div>
           </div>
         </div>

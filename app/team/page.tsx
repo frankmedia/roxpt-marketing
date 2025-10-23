@@ -10,7 +10,7 @@ export default function Team() {
       role: "Personal Trainer • Nutrition & Strength Specialist",
       image: "/images/team/natalie-shanahan.jpg",
       instagram: "https://www.instagram.com/nataliernpt/?hl=en",
-      bio: "I encourage clients to reach their full potential with personalised, effective programs. With a scientific background in genetics and bioinformatics, I combine biomechanics, strength training and nutrition to deliver fast, safe results—working alongside doctors/dietitians when needed.",
+      bio: "I encourage clients to reach their full potential with personalised, effective programs. With a scientific background in genetics and bioinformatics, I combine biomechanics, strength training and nutrition to deliver fast, safe results - working alongside doctors/dietitians when needed.",
       specialties: [
         "Olympic weightlifting & powerlifting",
         "Hypertrophy training (muscle building)",

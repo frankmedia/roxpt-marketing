@@ -164,6 +164,16 @@ export default function Science() {
       <section className="py-16 px-4 bg-zinc-900/50">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-4xl font-bold mb-8">Energy System Demands</h2>
+          <p className="text-gray-300 mb-4">
+            Hybrid competitions such as HYROX and DEKA, and obstacle or endurance formats like Spartan and Tough Mudder,
+            place demands on all three energy systems. Each task in a race calls on a different mix of quick power,
+            hard sustained efforts and steady aerobic work.
+          </p>
+          <p className="text-gray-400 mb-8">
+            Explosive starts and heavy sled drives are powered by the phosphocreatine system. Prolonged station work and
+            surges depend on glycolytic energy. The repeated runs and transitions are anchored by the oxidative system.
+            Understanding this blend guides training focus, pacing and fueling strategies.
+          </p>
           
           <div className="space-y-4">
             <div className="p-6 bg-black rounded-xl border-l-4 border-red-500">

@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# RoxPT Marketing Website
 
-## Getting Started
+A modern, responsive marketing website for RoxPT - the smart HYROX training platform. Built with Next.js 14, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## 🏃‍♂️ About RoxPT
 
+RoxPT is a personalized HYROX training programme designed for athletes of all levels. The platform provides:
+
+- **Personalized Training Plans** - Tailored to your fitness level and goals
+- **Progress Tracking** - Log every workout and watch your performance improve
+- **PT Check-Ins** - Regular coaching feedback to optimize your training
+- **Race-Ready Workouts** - HYROX-specific workouts designed for competition success
+
+## 🚀 Features
+
+- **Modern Design** - Clean, professional interface with dark theme
+- **Responsive Layout** - Optimized for desktop, tablet, and mobile devices
+- **Email Capture** - Lead generation with email signup functionality
+- **App Store Integration** - Direct links to iOS and Android apps
+- **Interactive Elements** - Image carousel, hover effects, and smooth transitions
+- **SEO Optimized** - Meta tags, Open Graph, and semantic HTML
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React
+- **Fonts**: Inter (Google Fonts)
+- **Deployment**: Vercel-ready
+
+## 📦 Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd roxpt-marketing
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+## 🏗️ Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/
+├── globals.css          # Global styles and Tailwind imports
+├── layout.tsx          # Root layout with metadata
+├── page.tsx            # Homepage with hero, features, and CTA
+├── science/            # Science page
+│   └── page.tsx
+└── join-team/          # Join team page
+    └── page.tsx
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎨 Design System
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Primary Color**: #FFCC00 (Yellow)
+- **Background**: Black (#000000)
+- **Secondary Background**: Zinc-900
+- **Text**: White with gray variants
+- **Typography**: Inter font family
 
-## Deploy on Vercel
+## 📱 Pages
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Homepage** (`/`) - Main landing page with hero, features, and CTA
+- **Science** (`/science`) - Information about the scientific approach
+- **Join Team** (`/join-team`) - For trainers interested in joining
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 🔧 Development
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+### Key Components
+
+- **Hero Section** - Main value proposition with email capture
+- **Features Grid** - Highlighting key platform features
+- **Stats Section** - Social proof with key metrics
+- **App Store Badges** - Download links for mobile apps
+- **Footer** - Navigation and company information
+
+## 🚀 Deployment
+
+The project is optimized for deployment on Vercel:
+
+1. Connect your GitHub repository to Vercel
+2. Configure environment variables if needed
+3. Deploy automatically on push to main branch
+
+## 📈 Performance
+
+- **Lighthouse Score**: Optimized for performance, accessibility, and SEO
+- **Image Optimization**: Next.js automatic image optimization
+- **Font Loading**: Optimized Google Fonts loading
+- **Bundle Size**: Minimal JavaScript bundle
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📄 License
+
+This project is private and proprietary to RoxPT.
+
+## 🔗 Links
+
+- **App Store**: [Download on iOS](https://apps.apple.com/app/roxfit/id6476465403)
+- **Google Play**: [Download on Android](https://play.google.com/store/apps/details?id=app.roxfit.app)
+- **Platform**: [RoxPT App](https://my.roxpt.app/login)
+
+---
+
+Built with ❤️ for the HYROX community

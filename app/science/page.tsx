@@ -1,0 +1,396 @@
+'use client';
+
+import { useState } from 'react';
+import { BookOpen, TrendingUp, Zap, Target, Award, Clock, Activity } from 'lucide-react';
+import Breadcrumbs from '../components/Breadcrumbs';
+
+export default function Science() {
+  const [selectedPhase, setSelectedPhase] = useState(0);
+
+  const phases = [
+    {
+      number: 1,
+      name: 'Base Phase',
+      weeks: 'Weeks 1–2',
+      focus: 'Aerobic Capacity + Technique',
+      energySystem: 'Zone 2 / Aerobic',
+      description: 'Build volume safely, improve running & SkiErg efficiency'
+    },
+    {
+      number: 2,
+      name: 'Build Phase',
+      weeks: 'Weeks 3–4',
+      focus: 'Strength + Threshold',
+      energySystem: 'Aerobic + Lactate Threshold',
+      description: 'Introduce faster runs, heavier carries, and circuits'
+    },
+    {
+      number: 3,
+      name: 'Peak Phase',
+      weeks: 'Weeks 5–6',
+      focus: 'HIIT + Simulation',
+      energySystem: 'Anaerobic + Race Specific',
+      description: 'Add short, high-intensity intervals to replicate race fatigue'
+    },
+    {
+      number: 4,
+      name: 'Taper Phase',
+      weeks: 'Final Week',
+      focus: 'Sharpness + Recovery',
+      energySystem: 'All systems',
+      description: 'Maintain performance without overload'
+    }
+  ];
+
+  return (
+    <main className="min-h-screen bg-black text-white">
+
+      {/* Hero Section */}
+      <section className="pt-24 pb-16 px-4 bg-gradient-to-b from-zinc-900 to-black">
+        <div className="container mx-auto max-w-4xl text-center">
+          <Breadcrumbs />
+
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#FFCC00]/10 border border-[#FFCC00]/30 rounded-full mb-8">
+            <BookOpen className="w-4 h-4 text-[#FFCC00]" />
+            <span className="text-sm font-semibold text-[#FFCC00]">HYROX TRAINING METHODOLOGY</span>
+          </div>
+
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
+            Backed by <span className="text-[#FFCC00]">Science</span>
+          </h1>
+          
+          <p className="text-xl text-gray-300">
+            Understanding the science behind your training programme
+          </p>
+        </div>
+      </section>
+
+      {/* What is HYROX */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-4xl font-bold mb-8">What is HYROX?</h2>
+          
+          <div className="p-8 bg-gradient-to-br from-[#FFCC00]/10 to-transparent border border-[#FFCC00]/30 rounded-xl mb-8">
+            <p className="text-xl text-gray-300 mb-6">
+              HYROX is a fitness race structured as <span className="text-[#FFCC00] font-bold">8 rounds</span> of:
+            </p>
+            <div className="flex items-center gap-4 text-2xl font-bold mb-6">
+              <span className="text-[#FFCC00]">1km run</span>
+              <span className="text-gray-500">→</span>
+              <span className="text-white">1 functional station</span>
+            </div>
+            <p className="text-gray-400 mb-4">
+              (e.g., SkiErg, sled push, sled pull, burpee broad jumps, row, farmer's carry, sandbag lunges, wall balls)
+            </p>
+            <div className="grid md:grid-cols-2 gap-4 mt-6">
+              <div className="p-4 bg-black/50 rounded-lg border border-zinc-800">
+                <div className="text-[#FFCC00] font-bold text-lg mb-1">Total Distance</div>
+                <div className="text-2xl font-bold">8km running + 8 stations</div>
+              </div>
+              <div className="p-4 bg-black/50 rounded-lg border border-zinc-800">
+                <div className="text-[#FFCC00] font-bold text-lg mb-1">Average Time</div>
+                <div className="text-2xl font-bold">60-90 minutes</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-6 bg-zinc-900/50 rounded-xl border border-zinc-800">
+            <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+              <Zap className="w-6 h-6 text-[#FFCC00]" />
+              Why It's Different
+            </h3>
+            <p className="text-gray-300 mb-4">
+              It's a <span className="text-[#FFCC00] font-semibold">"hybrid" event</span>: part endurance race, part functional fitness. This dual demand requires training that covers both running endurance and functional strength & conditioning.
+            </p>
+            <div className="p-4 bg-[#FFCC00]/10 border border-[#FFCC00]/30 rounded-lg">
+              <p className="font-bold mb-2">Key Challenge:</p>
+              <p className="text-gray-300">Maintaining running performance while building functional strength, without letting one interfere with the other.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Energy Systems */}
+      <section className="py-16 px-4 bg-zinc-900/50">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-4xl font-bold mb-8">Energy System Demands</h2>
+          
+          <div className="space-y-4">
+            <div className="p-6 bg-black rounded-xl border-l-4 border-red-500">
+              <div className="flex items-start justify-between mb-2">
+                <h3 className="text-2xl font-bold">Phosphocreatine</h3>
+                <span className="text-sm text-gray-400">0-10 seconds</span>
+              </div>
+              <p className="text-gray-300">Sled push initiation, explosive movements</p>
+            </div>
+
+            <div className="p-6 bg-black rounded-xl border-l-4 border-orange-500">
+              <div className="flex items-start justify-between mb-2">
+                <h3 className="text-2xl font-bold">Glycolytic</h3>
+                <span className="text-sm text-gray-400">10s - 2 min</span>
+              </div>
+              <p className="text-gray-300">Station completion, SkiErg, rowing efforts</p>
+            </div>
+
+            <div className="p-6 bg-black rounded-xl border-l-4 border-[#FFCC00]">
+              <div className="flex items-start justify-between mb-2">
+                <h3 className="text-2xl font-bold">Oxidative</h3>
+                <span className="text-sm text-gray-400">2+ minutes</span>
+              </div>
+              <p className="text-gray-300">Base for entire race, running between stations</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Training Phases - Interactive */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-4xl font-bold mb-12 text-center">Training Phases</h2>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Left Side - Content Display */}
+            <div className="order-2 md:order-1">
+              <div 
+                key={selectedPhase}
+                className="p-8 bg-gradient-to-br from-[#FFCC00]/10 to-transparent border-2 border-[#FFCC00] rounded-2xl min-h-[400px] animate-in fade-in slide-in-from-left duration-500"
+              >
+                <h3 className="text-4xl font-bold mb-3">{phases[selectedPhase].name}</h3>
+                <p className="text-xl text-gray-400 mb-8">{phases[selectedPhase].weeks}</p>
+                
+                <div className="space-y-6">
+                  <div>
+                    <p className="text-sm text-[#FFCC00] font-semibold mb-2">FOCUS</p>
+                    <p className="text-2xl font-bold">{phases[selectedPhase].focus}</p>
+                  </div>
+                  
+                  <div>
+                    <p className="text-sm text-[#FFCC00] font-semibold mb-2">ENERGY SYSTEM</p>
+                    <p className="text-xl text-gray-300">{phases[selectedPhase].energySystem}</p>
+                  </div>
+                  
+                  <div className="pt-6 border-t border-zinc-800">
+                    <p className="text-lg text-gray-300 leading-relaxed">{phases[selectedPhase].description}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Side - Phase Navigation */}
+            <div className="order-1 md:order-2 flex flex-col gap-4">
+              {phases.map((phase, index) => (
+                <button
+                  key={index}
+                  onClick={() => setSelectedPhase(index)}
+                  className={`p-6 rounded-2xl text-left transition-all duration-300 ${
+                    selectedPhase === index
+                      ? 'bg-[#FFCC00] text-black scale-105 shadow-lg shadow-[#FFCC00]/20'
+                      : 'bg-zinc-900 text-white hover:bg-zinc-800 hover:scale-102'
+                  }`}
+                >
+                  <div className="flex items-center gap-4">
+                    <div className={`flex items-center justify-center w-12 h-12 rounded-full text-xl font-bold ${
+                      selectedPhase === index
+                        ? 'bg-black text-[#FFCC00]'
+                        : 'bg-zinc-800 text-gray-400'
+                    }`}>
+                      {phase.number}
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold mb-1">{phase.name}</h4>
+                      <p className={`text-sm ${
+                        selectedPhase === index ? 'text-black/70' : 'text-gray-400'
+                      }`}>
+                        {phase.weeks}
+                      </p>
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 80/20 Rule */}
+      <section className="py-16 px-4 bg-zinc-900/50">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-4xl font-bold mb-8">Training Intensity Distribution: The 80/20 Rule</h2>
+          
+          <p className="text-xl text-gray-300 mb-8">Research-backed approach for optimal endurance development:</p>
+
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <div className="p-8 bg-black rounded-xl border-2 border-green-500">
+              <div className="text-6xl font-bold text-green-500 mb-4">80%</div>
+              <h3 className="text-2xl font-bold mb-3">Low Intensity (Easy)</h3>
+              <p className="text-gray-400 mb-2"><span className="text-[#FFCC00] font-semibold">Heart Rate:</span> {'<'}70% HRmax</p>
+              <p className="text-gray-300">Aerobic base, recovery</p>
+            </div>
+
+            <div className="p-8 bg-black rounded-xl border-2 border-red-500">
+              <div className="text-6xl font-bold text-red-500 mb-4">20%</div>
+              <h3 className="text-2xl font-bold mb-3">High Intensity (Hard)</h3>
+              <p className="text-gray-400 mb-2"><span className="text-[#FFCC00] font-semibold">Heart Rate:</span> {'>'}80% HRmax</p>
+              <p className="text-gray-300">Race pace, power</p>
+            </div>
+          </div>
+
+          <div className="p-6 bg-red-500/10 border border-red-500/30 rounded-xl">
+            <p className="font-bold text-red-400 mb-2">⚠️ Common Mistake:</p>
+            <p className="text-gray-300">Training too much in the "gray zone" (70-80% HRmax) reduces both aerobic base and high-end power development.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Weekly Structure */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto max-w-5xl">
+          <h2 className="text-4xl font-bold mb-8">Sample Weekly Training Structure</h2>
+          
+          <div className="space-y-3">
+            {[
+              { day: 'Monday', type: 'Strength + Stations', intensity: 'High', duration: '60-75 min', color: 'red' },
+              { day: 'Tuesday', type: 'Easy Run', intensity: 'Low', duration: '30-45 min', color: 'green' },
+              { day: 'Wednesday', type: 'HIIT + Stations', intensity: 'High', duration: '45-60 min', color: 'red' },
+              { day: 'Thursday', type: 'Active Recovery', intensity: 'Low', duration: '30 min', color: 'green' },
+              { day: 'Friday', type: 'Intervals + Circuit', intensity: 'Moderate', duration: '60-75 min', color: 'yellow' },
+              { day: 'Saturday', type: 'Long Run', intensity: 'Low', duration: '60-90 min', color: 'green' },
+              { day: 'Sunday', type: 'Rest / Mobility', intensity: '-', duration: '-', color: 'gray' }
+            ].map((session, i) => (
+              <div key={i} className={`p-6 bg-black rounded-xl border-l-4 ${
+                session.color === 'red' ? 'border-red-500' :
+                session.color === 'green' ? 'border-green-500' :
+                session.color === 'yellow' ? 'border-[#FFCC00]' :
+                'border-gray-500'
+              } hover:bg-zinc-900/50 transition-all`}>
+                <div className="grid md:grid-cols-4 gap-4 items-center">
+                  <div className="font-bold text-xl text-[#FFCC00]">{session.day}</div>
+                  <div className="text-lg">{session.type}</div>
+                  <div className="text-gray-400">{session.intensity}</div>
+                  <div className="text-gray-400">{session.duration}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Station Protocols */}
+      <section className="py-16 px-4 bg-zinc-900/50">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-4xl font-bold mb-8">Station-Specific Training Protocols</h2>
+          
+          <div className="space-y-4">
+            <div className="p-6 bg-black rounded-xl border border-zinc-800">
+              <h3 className="text-2xl font-bold mb-3">SkiErg</h3>
+              <p className="text-gray-300 font-mono">5 × 500m @ 70-75% effort, 90s rest</p>
+              <p className="text-sm text-gray-400 mt-2">→ Aerobic power + rhythm</p>
+            </div>
+
+            <div className="p-6 bg-black rounded-xl border border-zinc-800">
+              <h3 className="text-2xl font-bold mb-3">Sled Push/Pull</h3>
+              <p className="text-gray-300 font-mono">6 × 50m @ 100% race weight, 90s rest</p>
+              <p className="text-sm text-gray-400 mt-2">→ Power endurance</p>
+            </div>
+
+            <div className="p-6 bg-black rounded-xl border border-zinc-800">
+              <h3 className="text-2xl font-bold mb-3">Burpee Broad Jumps</h3>
+              <p className="text-gray-300 font-mono">8 × 5 jumps, focus on rhythm</p>
+              <p className="text-sm text-gray-400 mt-2">→ Movement efficiency</p>
+            </div>
+
+            <div className="p-6 bg-black rounded-xl border border-zinc-800">
+              <h3 className="text-2xl font-bold mb-3">Rowing</h3>
+              <p className="text-gray-300 font-mono">4 × 1000m @ 75-80% effort, 2min rest</p>
+              <p className="text-sm text-gray-400 mt-2">→ Lactate threshold</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Key Principles */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-4xl font-bold mb-8">Key Training Principles</h2>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { title: 'Progressive Overload', desc: 'Gradually increase volume and intensity' },
+              { title: 'Specificity', desc: 'Train movements and energy systems used in the race' },
+              { title: 'Recovery', desc: '7-9 hours sleep + active recovery sessions' },
+              { title: 'Consistency', desc: 'Regular training builds the base for peak performance' },
+              { title: 'Concurrent Training', desc: 'Separate strength and endurance by 6+ hours' }
+            ].map((principle, i) => (
+              <div key={i} className="p-6 bg-zinc-900/50 rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all">
+                <div className="flex items-start gap-3">
+                  <div className="text-[#FFCC00] text-2xl mt-1">▸</div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">{principle.title}</h3>
+                    <p className="text-gray-400">{principle.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Recovery & Adaptation */}
+      <section className="py-16 px-4 bg-gradient-to-b from-zinc-900 to-black">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-4xl font-bold mb-8">Recovery & Adaptation</h2>
+          
+          <div className="space-y-4 mb-8">
+            <div className="p-6 bg-black rounded-xl border border-zinc-800">
+              <div className="flex items-start justify-between mb-2">
+                <h3 className="text-2xl font-bold">Immediate Fatigue</h3>
+                <span className="text-sm text-gray-400">0-24 hours</span>
+              </div>
+              <p className="text-gray-300">Glycogen depletion, muscle damage</p>
+            </div>
+
+            <div className="p-6 bg-black rounded-xl border border-zinc-800">
+              <div className="flex items-start justify-between mb-2">
+                <h3 className="text-2xl font-bold">Recovery</h3>
+                <span className="text-sm text-gray-400">24-72 hours</span>
+              </div>
+              <p className="text-gray-300">Repair, glycogen restoration</p>
+            </div>
+
+            <div className="p-6 bg-black rounded-xl border-2 border-[#FFCC00]">
+              <div className="flex items-start justify-between mb-2">
+                <h3 className="text-2xl font-bold text-[#FFCC00]">Supercompensation</h3>
+                <span className="text-sm text-gray-400">72-120 hours</span>
+              </div>
+              <p className="text-gray-300">Adaptation, stronger than before</p>
+            </div>
+          </div>
+
+          <div className="p-6 bg-[#FFCC00]/10 border border-[#FFCC00]/30 rounded-xl">
+            <p className="font-bold mb-2 text-[#FFCC00]">⏱️ Optimal Training:</p>
+            <p className="text-gray-300">Apply next stimulus during supercompensation window (3-5 days after hard session)</p>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-24 px-4 bg-gradient-to-b from-black via-zinc-900 to-black">
+        <div className="container mx-auto max-w-4xl text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Ready to train <span className="text-[#FFCC00]">smarter</span>?
+          </h2>
+          <p className="text-xl text-gray-300 mb-8">
+            Start your science-backed HYROX training today
+          </p>
+          <a
+            href="/pricing#inquiry"
+            className="inline-block px-12 py-4 bg-[#FFCC00] text-black text-lg font-bold rounded-full hover:bg-yellow-400 transition-all transform hover:scale-105"
+          >
+            Get Started
+          </a>
+        </div>
+      </section>
+
+    </main>
+  );
+}

@@ -1,11 +1,18 @@
-'use client';
+"use client";
 
 import { useState } from 'react';
-import { BookOpen, TrendingUp, Zap, Target, Award, Clock, Activity } from 'lucide-react';
+import { BookOpen, TrendingUp, Zap, Target, Award, Clock, Activity, ChevronRight } from 'lucide-react';
 import Breadcrumbs from '../components/Breadcrumbs';
 
 export default function Science() {
   const [selectedPhase, setSelectedPhase] = useState(0);
+  const principles = [
+    { title: 'Progressive Overload', desc: 'Gradually increase volume and intensity' },
+    { title: 'Specificity', desc: 'Train movements and energy systems used in the race' },
+    { title: 'Recovery', desc: '7-9 hours sleep + active recovery sessions' },
+    { title: 'Consistency', desc: 'Regular training builds the base for peak performance' },
+    { title: 'Concurrent Training', desc: 'Separate strength and endurance by 6+ hours' }
+  ];
 
   const phases = [
     {
@@ -377,25 +384,7 @@ export default function Science() {
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-4xl font-bold mb-8">Key Training Principles</h2>
           
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              { title: 'Progressive Overload', desc: 'Gradually increase volume and intensity' },
-              { title: 'Specificity', desc: 'Train movements and energy systems used in the race' },
-              { title: 'Recovery', desc: '7-9 hours sleep + active recovery sessions' },
-              { title: 'Consistency', desc: 'Regular training builds the base for peak performance' },
-              { title: 'Concurrent Training', desc: 'Separate strength and endurance by 6+ hours' }
-            ].map((principle, i) => (
-              <div key={i} className="p-6 bg-zinc-900/50 rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all">
-                <div className="flex items-start gap-3">
-                  <div className="text-[#FFCC00] text-2xl mt-1">▸</div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">{principle.title}</h3>
-                    <p className="text-gray-400">{principle.desc}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <PrinciplesInteractive />
         </div>
       </section>
 
@@ -456,5 +445,42 @@ export default function Science() {
       </section>
 
     </main>
+  );
+}
+
+function PrinciplesInteractive() {
+  const items = [
+    { title: 'Progressive Overload', desc: 'Gradually increase volume and intensity' },
+    { title: 'Specificity', desc: 'Train movements and energy systems used in the race' },
+    { title: 'Recovery', desc: '7-9 hours sleep + active recovery sessions' },
+    { title: 'Consistency', desc: 'Regular training builds the base for peak performance' },
+    { title: 'Concurrent Training', desc: 'Separate strength and endurance by 6+ hours' }
+  ];
+  const [active, setActive] = useState<number | null>(null);
+  return (
+    <div className="grid md:grid-cols-2 gap-4">
+      {items.map((item, idx) => {
+        const isOpen = active === idx;
+        return (
+          <button
+            key={idx}
+            onClick={() => setActive(isOpen ? null : idx)}
+            className={`group text-left rounded-xl border transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#FFCC00] ${
+              isOpen ? 'border-[#FFCC00] bg-[#FFCC00]/10' : 'border-zinc-800 bg-zinc-900/50 hover:bg-zinc-900'
+            }`}
+          >
+            <div className="flex items-center justify-between p-4">
+              <h3 className="text-lg md:text-xl font-bold">{item.title}</h3>
+              <ChevronRight className={`w-5 h-5 text-[#FFCC00] transition-transform ${isOpen ? 'rotate-90' : ''}`} />
+            </div>
+            <div className={`grid transition-[grid-template-rows] duration-200 ease-in-out ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+              <div className="overflow-hidden">
+                <p className="px-4 pb-4 text-gray-400">{item.desc}</p>
+              </div>
+            </div>
+          </button>
+        );
+      })}
+    </div>
   );
 }

@@ -121,9 +121,11 @@ export default function Pricing() {
                 }`}
               >
                 {tier.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <div className="bg-[#FFCC00] text-black px-6 py-2 rounded-full font-bold text-sm">
-                      Most Popular
+                  <div className="absolute -top-5 left-1/2 -translate-x-1/2">
+                    <div className="bg-[#FFCC00] text-black px-3 py-1.5 rounded-full font-bold text-sm flex items-center gap-1">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <span key={i}>★</span>
+                      ))}
                     </div>
                   </div>
                 )}
@@ -132,8 +134,8 @@ export default function Pricing() {
                   <div className="text-center mb-8">
                     <h3 className="text-2xl font-bold mb-2">{tier.name}</h3>
                     <div className="mb-4">
-                      <span className="text-4xl font-bold text-[#FFCC00]">{tier.price}</span>
-                      <span className="text-gray-400 ml-2">{tier.period}</span>
+                      <span className="block text-4xl font-bold text-[#FFCC00]">{tier.price}</span>
+                      <span className="block text-gray-400">{tier.period}</span>
                     </div>
                     <p className="text-gray-400">{tier.description}</p>
                   </div>

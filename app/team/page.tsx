@@ -45,24 +45,6 @@ export default function Team() {
         "YMCA Circuit Training",
         "OLF Olympic Weightlifting • Advanced & Extreme Kettlebell"
       ]
-    },
-    {
-      name: "Emma Rodriguez",
-      role: "Nutrition & Performance Coach",
-      image: "/images/team/emma-rodriguez.jpg",
-      instagram: "https://instagram.com/emma_nutrition_coach", 
-      bio: "Registered dietitian and former professional athlete. Emma creates personalized nutrition plans that fuel peak performance and accelerate recovery.",
-      specialties: ["Sports Nutrition", "Weight Management", "Supplementation"],
-      achievements: ["RD Certification", "Former Pro Athlete", "1000+ Nutrition Plans"]
-    },
-    {
-      name: "James Chen",
-      role: "Movement & Mobility Specialist",
-      image: "/images/team/james-chen.jpg",
-      instagram: "https://instagram.com/james_mobility",
-      bio: "Physical therapist and movement expert who ensures every athlete moves efficiently and pain-free. James combines clinical expertise with athletic performance.",
-      specialties: ["Injury Rehabilitation", "Movement Screening", "Mobility Training"],
-      achievements: ["DPT Physical Therapy", "FMS Certified", "500+ Athletes Rehabilitated"]
     }
   ];
 

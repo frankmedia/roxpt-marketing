@@ -128,7 +128,7 @@ export default function Home() {
             <p className="text-xl text-gray-400">Built by athletes, for athletes</p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 items-start px-4 md:px-8 lg:grid-cols-[260px_minmax(0,1fr)_260px]">
+          <div className="grid grid-cols-1 gap-8 lg:gap-16 xl:gap-24 items-start px-4 md:px-8 lg:grid-cols-[260px_minmax(0,1fr)_260px]">
             <div className="space-y-6 text-right">
               <div className="p-6 bg-black rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all text-right">
                 <Target className="w-12 h-12 mb-4 text-[#FFCC00] ml-auto" />
@@ -142,14 +142,14 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative overflow-visible rounded-xl lg:w-[175%] lg:left-1/2 lg:-translate-x-1/2">
+            <div className="relative overflow-hidden rounded-xl">
               <div className="relative aspect-[3/4] lg:aspect-[1/2] bg-black">
                 {carouselImages.map((src, i) => (
                   <img
                     key={src}
                     src={src}
                     alt="App preview"
-                    className={`absolute inset-0 m-auto left-1/2 -translate-x-1/2 w-full h-full object-contain transition-opacity duration-700 ${i === slide ? 'opacity-100' : 'opacity-0'}`}
+                    className={`absolute inset-0 m-auto w-full h-full object-contain transition-opacity duration-700 ${i === slide ? 'opacity-100' : 'opacity-0'}`}
                   />
                 ))}
               </div>

@@ -120,7 +120,7 @@ export default function Home() {
 
       {/* Features Preview */}
       <section className="py-24 px-4 bg-zinc-900/50">
-        <div className="container mx-auto max-w-4xl">
+        <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Everything you need to <span className="text-[#FFCC00]">dominate HYROX</span>
@@ -128,7 +128,7 @@ export default function Home() {
             <p className="text-xl text-gray-400">Built by athletes, for athletes</p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 lg:gap-16 xl:gap-24 items-start px-4 md:px-8 lg:grid-cols-[260px_minmax(0,1fr)_260px]">
+          <div className="grid grid-cols-1 gap-8 lg:gap-8 xl:gap-12 items-start px-4 md:px-8 lg:grid-cols-[220px_minmax(0,1fr)_220px] xl:grid-cols-[260px_minmax(0,1fr)_260px]">
             <div className="space-y-6 text-right">
               <div className="p-6 bg-black rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all text-right">
                 <Target className="w-12 h-12 mb-4 text-[#FFCC00] ml-auto" />
@@ -142,16 +142,22 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative overflow-hidden rounded-xl">
-              <div className="relative aspect-[3/4] lg:aspect-[1/2] bg-black">
-                {carouselImages.map((src, i) => (
-                  <img
-                    key={src}
-                    src={src}
-                    alt="App preview"
-                    className={`absolute inset-0 m-auto w-full h-full object-contain transition-opacity duration-700 ${i === slide ? 'opacity-100' : 'opacity-0'}`}
-                  />
-                ))}
+            <div className="relative mx-auto w-full max-w-[360px] lg:max-w-[420px]">
+              {/* Phone frame */}
+              <div className="relative rounded-[32px] border border-zinc-700 bg-black p-1 shadow-[0_10px_30px_rgba(0,0,0,0.6)]">
+                {/* Notch */}
+                <div className="absolute left-1/2 -translate-x-1/2 top-0 mt-0.5 h-5 w-28 rounded-b-2xl bg-zinc-800" />
+                {/* Screen */}
+                <div className="relative rounded-[24px] overflow-hidden bg-black aspect-[3/4] lg:aspect-[1/2]">
+                  {carouselImages.map((src, i) => (
+                    <img
+                      key={src}
+                      src={src}
+                      alt="App preview"
+                      className={`absolute inset-0 m-auto w-full h-full object-cover scale-[1.04] origin-center transition-opacity duration-700 ${i === slide ? 'opacity-100' : 'opacity-0'}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -163,8 +169,8 @@ export default function Home() {
               </div>
               <div className="p-6 bg-black rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all text-left">
                 <Clock className="w-12 h-12 mb-4 text-[#FFCC00]" />
-                <h3 className="text-xl font-bold mb-2">Race Ready</h3>
-                <p className="text-gray-400">HYROX-specific workouts designed for competition success</p>
+                <h3 className="text-xl font-bold mb-2">Hybrid Race Ready</h3>
+                <p className="text-gray-400">Functional‑fitness race preparation (HYROX‑style) designed for competition success</p>
               </div>
             </div>
           </div>

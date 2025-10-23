@@ -127,7 +127,7 @@ export default function GDPRPopup() {
             <div className="mb-6">
               <p className="text-gray-300 leading-relaxed mb-4">
                 We use cookies to enhance your browsing experience, serve personalized content, 
-                and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.
+                and analyze our traffic. By clicking &quot;Accept All&quot;, you consent to our use of cookies.
               </p>
               <div className="flex items-center gap-2 text-sm text-gray-400">
                 <Shield className="w-4 h-4" />

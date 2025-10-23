@@ -66,7 +66,7 @@ export default function JoinTeam() {
           </h1>
           
           <p className="text-xl text-gray-300 mb-8">
-            We're looking for passionate, qualified personal trainers who specialize in HYROX training to join our growing team.
+            We&apos;re looking for passionate, qualified personal trainers who specialize in HYROX training to join our growing team.
           </p>
         </div>
       </section>
@@ -116,7 +116,7 @@ export default function JoinTeam() {
               </div>
               <h2 className="text-3xl font-bold mb-4">Application Submitted!</h2>
               <p className="text-xl text-gray-300 mb-8">
-                Thank you for your interest in joining RoxPT. We'll review your application and get back to you within 5-7 business days.
+                Thank you for your interest in joining RoxPT. We&apos;ll review your application and get back to you within 5-7 business days.
               </p>
               <a
                 href="/"

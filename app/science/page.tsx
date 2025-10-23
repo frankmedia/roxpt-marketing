@@ -97,7 +97,7 @@ export default function Science() {
           <div className="p-6 bg-zinc-900/50 rounded-xl border border-zinc-800">
             <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
               <Zap className="w-6 h-6 text-[#FFCC00]" />
-              Why It&apos;s Different
+              Why HYROX is Different
             </h3>
             <p className="text-gray-300 mb-4">
               It&apos;s a <span className="text-[#FFCC00] font-semibold">&quot;hybrid&quot; event</span>: part endurance race, part functional fitness. This dual demand requires training that covers both running endurance and functional strength &amp; conditioning.

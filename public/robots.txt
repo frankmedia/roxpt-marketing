@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Popular LLM/Research bots
+User-agent: GPTBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: CCBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://roxpt-marketing.vercel.app/sitemap.xml
+

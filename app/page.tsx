@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import { Flame, Target, LineChart, Clock, Mail, CheckCircle2 } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Home() {
   const [email, setEmail] = useState('');
@@ -57,7 +58,7 @@ export default function Home() {
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-300 mb-12">
-            Your personalized training programme
+            The Precision Plan: Fueling Your Race Ambition
           </p>
 
           {/* Email Signup */}
@@ -65,7 +66,7 @@ export default function Home() {
             {status === 'success' ? (
               <div className="flex items-center justify-center gap-2 p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
                 <CheckCircle2 className="w-5 h-5 text-green-500" />
-                <span className="text-green-500 font-semibold">Thanks! We'll notify you at launch.</span>
+                <span className="text-green-500 font-semibold">Thanks! We&apos;ll notify you at launch.</span>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex gap-2">
@@ -95,7 +96,7 @@ export default function Home() {
           {/* App Store Badges */}
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-x-4 gap-y-6">
             <div className="flex justify-center items-center px-4 bg-zinc-900 rounded-full hover:bg-zinc-800 transition-all">
-              <a href="https://apps.apple.com/app/roxfit/id6476465403" title="Go to Apple Store" className="block">
+              <a href="#" title="Go to Apple Store" className="block">
                 <img 
                   width="220" 
                   src="https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/00f3d09f-0db5-49ce-b063-159e4ec36a58.svg" 
@@ -105,7 +106,7 @@ export default function Home() {
               </a>
             </div>
             <div className="flex justify-center items-center px-4 bg-zinc-900 rounded-full hover:bg-zinc-800 transition-all">
-              <a href="https://play.google.com/store/apps/details?id=app.roxfit.app" title="Go to Google Play" className="block">
+              <a href="#" title="Go to Google Play" className="block">
                 <img 
                   width="220" 
                   src="https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/9b92921f-27ed-4beb-831b-e91058b0cdfb.svg" 
@@ -129,14 +130,14 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 gap-8 lg:gap-8 xl:gap-12 items-start px-4 md:px-8 lg:grid-cols-[220px_minmax(0,1fr)_220px] xl:grid-cols-[260px_minmax(0,1fr)_260px]">
-            <div className="space-y-6 text-right">
-              <div className="p-6 bg-black rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all text-right">
-                <Target className="w-12 h-12 mb-4 text-[#FFCC00] ml-auto" />
+            <div className="space-y-6 text-center md:text-right">
+              <div className="p-6 bg-black rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all text-center md:text-right">
+                <Target className="w-12 h-12 mb-4 text-[#FFCC00] mx-auto md:ml-auto" />
                 <h3 className="text-xl font-bold mb-2">Personalized Plans</h3>
                 <p className="text-gray-400">Training programs tailored to your fitness level and goals</p>
               </div>
-              <div className="p-6 bg-black rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all text-right">
-                <Flame className="w-12 h-12 mb-4 text-[#FFCC00] ml-auto" />
+              <div className="p-6 bg-black rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all text-center md:text-right">
+                <Flame className="w-12 h-12 mb-4 text-[#FFCC00] mx-auto md:ml-auto" />
                 <h3 className="text-xl font-bold mb-2">Track Progress</h3>
                 <p className="text-gray-400">Log every workout and watch your performance improve</p>
               </div>
@@ -148,29 +149,32 @@ export default function Home() {
                 {/* Notch */}
                 <div className="absolute left-1/2 -translate-x-1/2 top-0 mt-0.5 h-5 w-28 rounded-b-2xl bg-zinc-800" />
                 {/* Screen */}
-                <div className="relative rounded-[24px] overflow-hidden bg-black aspect-[3/4] lg:aspect-[1/2]">
+                <div className="relative rounded-[24px] overflow-hidden bg-black aspect-[390/844]">
                   {carouselImages.map((src, i) => (
-                    <img
+                    <Image
                       key={src}
                       src={src}
                       alt="App preview"
-                      className={`absolute inset-0 m-auto w-full h-full object-cover scale-[1.04] origin-center transition-opacity duration-700 ${i === slide ? 'opacity-100' : 'opacity-0'}`}
+                      fill
+                      sizes="(min-width: 1024px) 420px, 360px"
+                      className={`absolute inset-0 m-auto object-contain transition-opacity duration-700 ${i === slide ? 'opacity-100' : 'opacity-0'}`}
+                      priority={i === 0}
                     />
                   ))}
                 </div>
               </div>
             </div>
 
-            <div className="space-y-6 text-left">
-              <div className="p-6 bg-black rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all text-left">
-                <LineChart className="w-12 h-12 mb-4 text-[#FFCC00]" />
+            <div className="space-y-6 text-center md:text-left">
+              <div className="p-6 bg-black rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all text-center md:text-left">
+                <LineChart className="w-12 h-12 mb-4 text-[#FFCC00] mx-auto md:mx-0" />
                 <h3 className="text-xl font-bold mb-2">PT Check-Ins</h3>
-                <p className="text-gray-400">Regular coaching feedback to optimize your training</p>
+                <p className="text-gray-400">Get proactive feedback on form and pacing adjustments weekly, ensuring zero wasted effort and a perfect race peak.</p>
               </div>
-              <div className="p-6 bg-black rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all text-left">
-                <Clock className="w-12 h-12 mb-4 text-[#FFCC00]" />
+              <div className="p-6 bg-black rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all text-center md:text-left">
+                <Clock className="w-12 h-12 mb-4 text-[#FFCC00] mx-auto md:mx-0" />
                 <h3 className="text-xl font-bold mb-2">Hybrid Race Ready</h3>
-                <p className="text-gray-400">Functional‑fitness race preparation (HYROX‑style) designed for competition success</p>
+                <p className="text-gray-400">Training designed to mimic the exact fatigue and transition demands of a HYROX event, so you eliminate surprises on the course.</p>
               </div>
             </div>
           </div>

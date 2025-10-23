@@ -104,9 +104,9 @@ export default function Pricing() {
               Training Plans That <span className="text-[#FFCC00]">Deliver Results</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
-              Choose the perfect coaching package for your goals and budget. All plans include personalized programming and expert guidance.
-            </p>
+              <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
+                Choose the perfect coaching package for your goals and budget. All plans include personalized programming and expert guidance.
+              </p>
           </div>
 
           {/* Pricing Cards */}

@@ -22,6 +22,12 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  /* Center headings on mobile, left-align from md up */
+  @media (max-width: 767px) {
+    h1, h2, h3 {
+      text-align: center;
+    }
+  }
 }
 
 /* Smooth scrolling */

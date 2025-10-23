@@ -1,10 +1,12 @@
-'use client';
+"use client";
 
-import { Flame } from 'lucide-react';
+import { Flame, Menu, X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 
 export default function Header() {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
   const navItems = [
     { href: '/science', label: 'Science' },
     { href: '/team', label: 'Team' },
@@ -40,14 +42,42 @@ export default function Header() {
             Sign In
           </a>
         </nav>
-        {/* Mobile: Just Sign In button */}
-        <a 
-          href="https://my.roxpt.app/login"
-          className="md:hidden px-6 py-2 bg-[#FFCC00] text-black font-bold rounded-full hover:bg-yellow-400 transition-all"
+        {/* Mobile menu button */}
+        <button
+          className="md:hidden p-2 text-white"
+          aria-label="Toggle navigation"
+          onClick={() => setOpen((v) => !v)}
         >
-          Sign In
-        </a>
+          {open ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+        </button>
       </div>
+
+      {/* Mobile sheet */}
+      {open && (
+        <div className="md:hidden border-t border-zinc-800 bg-black/95 backdrop-blur-sm">
+          <div className="container mx-auto px-4 py-4 space-y-4">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className={`block py-2 text-lg ${
+                  pathname === item.href ? 'text-[#FFCC00] font-semibold' : 'text-gray-300'
+                }`}
+              >
+                {item.label}
+              </a>
+            ))}
+            <a
+              href="https://my.roxpt.app/login"
+              className="inline-block px-6 py-3 bg-[#FFCC00] text-black font-bold rounded-full"
+              onClick={() => setOpen(false)}
+            >
+              Sign In
+            </a>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

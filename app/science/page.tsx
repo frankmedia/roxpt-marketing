@@ -80,7 +80,7 @@ export default function Science() {
               <span className="text-white">1 functional station</span>
             </div>
             <p className="text-gray-400 mb-4">
-              (e.g., SkiErg, sled push, sled pull, burpee broad jumps, row, farmer's carry, sandbag lunges, wall balls)
+              (e.g., SkiErg, sled push, sled pull, burpee broad jumps, row, farmer&apos;s carry, sandbag lunges, wall balls)
             </p>
             <div className="grid md:grid-cols-2 gap-4 mt-6">
               <div className="p-4 bg-black/50 rounded-lg border border-zinc-800">
@@ -305,7 +305,11 @@ export default function Science() {
       {/* Weekly Structure */}
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-5xl">
-          <h2 className="text-4xl font-bold mb-8">Sample Weekly Training Structure</h2>
+          <h2 className="text-4xl font-bold mb-8 text-center md:text-left">
+            <span className="inline-block px-3 py-1 rounded-md bg-[#FFCC00]/10 border border-[#FFCC00]/30 sm:bg-transparent sm:border-0">
+              Sample Weekly Training Structure
+            </span>
+          </h2>
           
           <div className="space-y-3">
             {[

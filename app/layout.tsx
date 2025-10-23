@@ -16,6 +16,22 @@ export const metadata: Metadata = {
     description: "Your personalized HYROX training programme",
     type: "website",
     locale: "en_GB",
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://roxpt-marketing.vercel.app',
+    images: [
+      {
+        url: '/images/home.png',
+        width: 1200,
+        height: 630,
+        alt: 'RoxPT - Hybrid race training app',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'RoxPT - Built for HYROX. Tuned for You.',
+    description: 'Your personalized HYROX training programme',
+    images: ['/images/home.png'],
+    creator: '@RoxPT',
   },
 };
 

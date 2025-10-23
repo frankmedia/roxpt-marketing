@@ -75,8 +75,8 @@ export default function GDPRPopup() {
     console.log('Tracking initialized based on user consent');
     
     // Example Google Analytics implementation
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('consent', 'update', {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('consent', 'update', {
         analytics_storage: preferences.analytics ? 'granted' : 'denied',
         ad_storage: preferences.marketing ? 'granted' : 'denied',
         functionality_storage: preferences.functional ? 'granted' : 'denied'

@@ -168,7 +168,7 @@ export default function Cookies() {
                 <div>
                   <h3 className="text-xl font-semibold mb-3">Cookie Consent Banner</h3>
                   <p className="text-gray-300 mb-4">
-                    When you first visit our website, you'll see a cookie consent banner where you can:
+                    When you first visit our website, you&apos;ll see a cookie consent banner where you can:
                   </p>
                   <ul className="list-disc list-inside space-y-2 text-gray-300">
                     <li>Accept all cookies</li>

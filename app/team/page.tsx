@@ -10,7 +10,7 @@ export default function Team() {
       role: "Personal Trainer • Nutrition & Strength Specialist",
       image: "/images/team/natalie-shanahan.jpg",
       instagram: "https://www.instagram.com/nataliernpt/?hl=en",
-      bio: "I encourage clients to reach their full potential with personalised, effective programs. With a scientific background in genetics and bioinformatics, I combine biomechanics, strength training and nutrition to deliver fast, safe results - working alongside doctors/dietitians when needed.",
+      bio: "Natalie helps clients reach their potential with evidence‑based programming. With a background in genetics and bioinformatics, she blends biomechanics, strength work and nutrition to deliver fast, safe results, collaborating with doctors/dietitians when needed.",
       specialties: [
         "Olympic weightlifting & powerlifting",
         "Hypertrophy training (muscle building)",
@@ -31,7 +31,7 @@ export default function Team() {
       role: "Personal Trainer • Sports Strength & Conditioning",
       image: "/images/team/richard-lee.jpg",
       instagram: "https://www.instagram.com/richardrnpt/?hl=en",
-      bio: "Results-driven coaching for fat loss, physique, performance and busy professionals. I bring sports S&C methods to everyday athletes, from pre/post-natal to strongman, ensuring efficient sessions that fit demanding schedules.",
+      bio: "Richard coaches busy professionals and athletes for fat loss, physique and performance. He applies sports S&C methods to everyday training—from pre/post‑natal to strongman—so sessions are efficient and effective.",
       specialties: [
         "Hypertrophy (muscle building)",
         "Sports Strength & Conditioning",
@@ -153,7 +153,7 @@ export default function Team() {
           {/* Stats Section */}
           <div className="bg-gradient-to-r from-zinc-900 to-black rounded-2xl border border-zinc-800 p-8 mb-16">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Our Team's Impact</h2>
+              <h2 className="text-3xl font-bold mb-4">Our Team&apos;s Impact</h2>
               <p className="text-gray-400">Combined expertise delivering results</p>
             </div>
             

@@ -122,8 +122,8 @@ This project is private and proprietary to RoxPT.
 
 ## 🔗 Links
 
-- **App Store**: [Download on iOS](https://apps.apple.com/app/roxfit/id6476465403)
-- **Google Play**: [Download on Android](https://play.google.com/store/apps/details?id=app.roxfit.app)
+- **App Store**: [Download on iOS]()
+- **Google Play**: [Download on Android]()
 - **Platform**: [RoxPT App](https://my.roxpt.app/login)
 
 ---

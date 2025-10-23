@@ -6,22 +6,45 @@ import Breadcrumbs from '../components/Breadcrumbs';
 export default function Team() {
   const teamMembers = [
     {
-      name: "Sarah Mitchell",
-      role: "Head Coach & HYROX Specialist",
-      image: "/images/team/sarah-mitchell.jpg",
-      instagram: "https://instagram.com/sarah_rox_coach",
-      bio: "Former elite athlete turned HYROX champion. Sarah has coached 200+ athletes to podium finishes and brings 8 years of competitive experience to every training session.",
-      specialties: ["Race Strategy", "Mental Preparation", "Recovery Optimization"],
-      achievements: ["3x HYROX World Champion", "Certified Strength Coach", "500+ Athletes Coached"]
+      name: "Natalie Shanahan",
+      role: "Personal Trainer • Nutrition & Strength Specialist",
+      image: "/images/team/natalie-shanahan.jpg",
+      instagram: "https://www.instagram.com/nataliernpt/?hl=en",
+      bio: "I encourage clients to reach their full potential with personalised, effective programs. With a scientific background in genetics and bioinformatics, I combine biomechanics, strength training and nutrition to deliver fast, safe results—working alongside doctors/dietitians when needed.",
+      specialties: [
+        "Olympic weightlifting & powerlifting",
+        "Hypertrophy training (muscle building)",
+        "Nutrition",
+        "Fat loss"
+      ],
+      achievements: [
+        "NVQ L3 Personal Trainer Advanced Instructor",
+        "NVQ L3 Nutrition & Weight Management",
+        "UKSCA Foundation & Programming (L4)",
+        "Olympic Weightlifting Instructor",
+        "Advanced/Extreme Kettlebell & Performance Boxing",
+        "BSc (Hons) Genetics • MSc Bioinformatics"
+      ]
     },
     {
-      name: "Marcus Thompson",
-      role: "Strength & Conditioning Coach",
-      image: "/images/team/marcus-thompson.jpg", 
-      instagram: "https://instagram.com/marcus_strength",
-      bio: "Powerlifting champion with a passion for functional fitness. Marcus specializes in building the raw strength and power needed to dominate HYROX competitions.",
-      specialties: ["Power Development", "Injury Prevention", "Movement Quality"],
-      achievements: ["2x British Powerlifting Champion", "MSc Sports Science", "10+ Years Experience"]
+      name: "Richard Lee",
+      role: "Personal Trainer • Sports Strength & Conditioning",
+      image: "/images/team/richard-lee.jpg",
+      instagram: "https://www.instagram.com/richardrnpt/?hl=en",
+      bio: "Results-driven coaching for fat loss, physique, performance and busy professionals. I bring sports S&C methods to everyday athletes, from pre/post-natal to strongman, ensuring efficient sessions that fit demanding schedules.",
+      specialties: [
+        "Hypertrophy (muscle building)",
+        "Sports Strength & Conditioning",
+        "Strongman preparation",
+        "Fat loss"
+      ],
+      achievements: [
+        "YMCA Personal Trainer Award",
+        "YMCA L3 Nutrition & Weight Management",
+        "UKSCA Foundation & Programming",
+        "YMCA Circuit Training",
+        "OLF Olympic Weightlifting • Advanced & Extreme Kettlebell"
+      ]
     },
     {
       name: "Emma Rodriguez",

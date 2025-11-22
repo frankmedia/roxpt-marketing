@@ -82,14 +82,6 @@ export default function RoxSIM() {
                   Covers running, sled push/pull, burpees, row, SkiErg, wall balls and more.
                 </li>
               </ul>
-              <div className="pt-2">
-                <a
-                  href="#"
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#FFCC00] text-black font-bold px-6 py-3 text-base hover:bg-yellow-400 transition-colors"
-                >
-                  <Download className="w-5 h-5" /> Download RoxSIM
-                </a>
-              </div>
             </div>
           </div>
         </div>

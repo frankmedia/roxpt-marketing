@@ -8,6 +8,7 @@ export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const navItems = [
+    { href: '/roxsim', label: 'RoxSIM' },
     { href: '/science', label: 'Science' },
     { href: '/team', label: 'Team' },
     { href: '/pricing', label: 'Pricing' },

@@ -6,7 +6,7 @@ function getSiteUrl(): string {
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = getSiteUrl();
-  const pages = ['/', '/science', '/team', '/pricing', '/join-team', '/privacy', '/cookies'];
+  const pages = ['/', '/science', '/team', '/pricing', '/join-team', '/privacy', '/cookies', '/roxsim'];
   const now = new Date();
   return pages.map((path) => ({
     url: `${base}${path}`,

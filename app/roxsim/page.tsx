@@ -32,7 +32,7 @@ export default function RoxSIM() {
           {/* Store CTAs */}
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-x-4 gap-y-6">
             <div className="flex justify-center items-center px-4 bg-zinc-900 rounded-full hover:bg-zinc-800 transition-all">
-              <a href="#" title="Go to Apple Store" className="block">
+              <a href="https://apps.apple.com/gb/app/roxsim/id6755498664" target="_blank" rel="noopener noreferrer" title="Download on the App Store" className="block">
                 <img 
                   width="220" 
                   src="https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/00f3d09f-0db5-49ce-b063-159e4ec36a58.svg" 
@@ -42,7 +42,7 @@ export default function RoxSIM() {
               </a>
             </div>
             <div className="flex justify-center items-center px-4 bg-zinc-900 rounded-full hover:bg-zinc-800 transition-all">
-              <a href="#" title="Go to Google Play" className="block">
+              <a href="https://play.google.com/store/apps/details?id=com.roxsims.app" target="_blank" rel="noopener noreferrer" title="Get it on Google Play" className="block">
                 <img 
                   width="220" 
                   src="https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/9b92921f-27ed-4beb-831b-e91058b0cdfb.svg" 

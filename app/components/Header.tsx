@@ -13,8 +13,6 @@ export default function Header() {
     { href: '/oxyrox', label: 'OxyROX' },
     { href: '/roxelevate', label: 'RoxElevate' },
     { href: '/science', label: 'Science' },
-    { href: '/team', label: 'Team' },
-    { href: '/pricing', label: 'Pricing' },
     { href: '/join-team', label: 'Join Team' }
   ];
 

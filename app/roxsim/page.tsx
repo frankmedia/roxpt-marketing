@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Flame, Play, Clock, BarChart3, Headphones, Target, Sparkles } from 'lucide-react';
+import { Flame, Play, Clock, BarChart3, Headphones, Target, Sparkles, Users, Trophy, TrendingUp, Share2 } from 'lucide-react';
 
 export default function RoxSIM() {
   const shots = [
@@ -74,6 +74,14 @@ export default function RoxSIM() {
                   Real‑time audio coaching to adjust pace and conserve energy.
                 </li>
                 <li className="flex items-start gap-3 justify-center lg:justify-start">
+                  <Users className="w-5 h-5 text-[#FFCC00] mt-1 shrink-0" />
+                  Add friends and compete in virtual competitions.
+                </li>
+                <li className="flex items-start gap-3 justify-center lg:justify-start">
+                  <Trophy className="w-5 h-5 text-[#FFCC00] mt-1 shrink-0" />
+                  Join leaderboards and see how you rank against others.
+                </li>
+                <li className="flex items-start gap-3 justify-center lg:justify-start">
                   <BarChart3 className="w-5 h-5 text-[#FFCC00] mt-1 shrink-0" />
                   Detailed analytics: splits, estimated finish, movement efficiency.
                 </li>
@@ -94,10 +102,14 @@ export default function RoxSIM() {
             <h3 className="text-3xl md:text-4xl font-bold">Why Athletes Love RoxSIM</h3>
             <p className="text-gray-400 mt-2">Pacing, accountability and race‑day confidence – in every session.</p>
           </div>
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { icon: Clock, title: 'Accurate Splits', desc: 'Track every station, transition and total time with precision.' },
               { icon: Headphones, title: 'Audio Coaching', desc: 'Real‑time cues keep you on pace and under control.' },
+              { icon: Users, title: 'Add Friends', desc: 'Connect with friends and train together. Challenge each other and stay motivated.' },
+              { icon: Trophy, title: 'Virtual Competitions', desc: 'Join competitions, compete against others, and climb the leaderboards.' },
+              { icon: TrendingUp, title: 'Leaderboards', desc: 'See how you rank against friends and the global community.' },
+              { icon: Share2, title: 'Share Results', desc: 'Share your achievements and race times with your network.' },
               { icon: Sparkles, title: 'Efficiency Scores', desc: 'See where you leak energy and get actionable fixes.' },
               { icon: BarChart3, title: 'Race Predictions', desc: 'Estimate finish time and target weak segments.' },
             ].map(({ icon: Icon, title, desc }) => (

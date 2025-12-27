@@ -41,9 +41,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Company */}
+          {/* RoxPT */}
           <div>
-            <h4 className="font-semibold text-sm uppercase tracking-wide mb-4 text-white">Company</h4>
+            <h4 className="font-semibold text-sm uppercase tracking-wide mb-4 text-white">RoxPT</h4>
             <ul className="space-y-3 text-gray-400 text-sm">
               <li>
                 <a href="/science" className="hover:text-[#FFCC00] transition-colors">Science</a>

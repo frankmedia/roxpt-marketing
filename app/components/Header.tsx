@@ -11,9 +11,7 @@ export default function Header() {
     { href: '/roxsim', label: 'RoxSIM' },
     { href: '/roxcycle', label: 'RoxCycle' },
     { href: '/oxyrox', label: 'OxyROX' },
-    { href: '/roxelevate', label: 'RoxElevate' },
-    { href: '/science', label: 'Science' },
-    { href: '/join-team', label: 'Join Team' }
+    { href: '/roxelevate', label: 'RoxElevate' }
   ];
 
   return (

@@ -9,6 +9,9 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const navItems = [
     { href: '/roxsim', label: 'RoxSIM' },
+    { href: '/roxcycle', label: 'RoxCycle' },
+    { href: '/oxyrox', label: 'OxyROX' },
+    { href: '/roxelevate', label: 'RoxElevate' },
     { href: '/science', label: 'Science' },
     { href: '/team', label: 'Team' },
     { href: '/pricing', label: 'Pricing' },
@@ -20,7 +23,7 @@ export default function Header() {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <a href="/" className="flex items-center gap-2">
           <Flame className="w-8 h-8 text-[#FFCC00]" />
-          <span className="text-2xl font-bold">RoxPT</span>
+          <span className="text-2xl font-bold">Rox</span>
         </a>
         <nav className="hidden md:flex items-center gap-6">
           {navItems.map((item) => (

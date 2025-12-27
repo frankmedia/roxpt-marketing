@@ -10,13 +10,22 @@ export default function Footer() {
           <div className="sm:max-w-md">
             <a href="/" className="flex items-center gap-2 mb-2">
               <Flame className="w-5 h-5 text-[#FFCC00]" />
-              <span className="text-lg font-bold">RoxPT</span>
+              <span className="text-lg font-bold">Rox</span>
             </a>
             <p className="text-gray-500 text-sm mb-3">
-              Professional training programs designed for athletes of all levels
+              Your complete fitness and performance ecosystem. Four powerful apps designed to elevate your training.
             </p>
             <div>
-              <h4 className="font-semibold text-sm uppercase tracking-wide mb-2">Product</h4>
+              <h4 className="font-semibold text-sm uppercase tracking-wide mb-2">Apps</h4>
+              <ul className="space-y-1 text-gray-400 text-sm">
+                <li><a href="/roxsim" className="hover:text-white transition-colors">RoxSIM</a></li>
+                <li><a href="/roxcycle" className="hover:text-white transition-colors">RoxCycle</a></li>
+                <li><a href="/oxyrox" className="hover:text-white transition-colors">OxyROX</a></li>
+                <li><a href="/roxelevate" className="hover:text-white transition-colors">RoxElevate</a></li>
+              </ul>
+            </div>
+            <div className="mt-4">
+              <h4 className="font-semibold text-sm uppercase tracking-wide mb-2">Company</h4>
               <ul className="space-y-1 text-gray-400 text-sm">
                 <li><a href="/science" className="hover:text-white transition-colors">Science</a></li>
                 <li><a href="/team" className="hover:text-white transition-colors">Team</a></li>
@@ -37,7 +46,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-zinc-800 pt-4 text-center text-gray-500 text-sm">
-          <p>&copy; {new Date().getFullYear()} RoxPT. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Rox. All rights reserved.</p>
         </div>
       </div>
     </footer>

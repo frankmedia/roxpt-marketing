@@ -8,12 +8,12 @@ import Footer from "./components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "RoxPT - Built for HYROX. Tuned for You.",
-  description: "Your personalized HYROX training programme. Professional training programs designed for athletes of all levels.",
-  keywords: "HYROX, training, fitness, workout, personal trainer, race, competition",
+  title: "Rox - Fitness & Performance Apps",
+  description: "Your complete fitness and performance ecosystem. RoxSIM, RoxCycle, OxyROX, and RoxElevate - four powerful apps designed to elevate your training.",
+  keywords: "fitness apps, performance apps, HYROX, training, cycle tracking, breathing exercises, motivation, workout, race, competition",
   openGraph: {
-    title: "RoxPT - Built for HYROX. Tuned for You.",
-    description: "Your personalized HYROX training programme",
+    title: "Rox - Fitness & Performance Apps",
+    description: "Your complete fitness and performance ecosystem. Four powerful apps designed to elevate your training.",
     type: "website",
     locale: "en_GB",
     url: process.env.NEXT_PUBLIC_SITE_URL || 'https://roxpt-marketing.vercel.app',
@@ -22,16 +22,16 @@ export const metadata: Metadata = {
         url: '/images/home.png',
         width: 1200,
         height: 630,
-        alt: 'RoxPT - Hybrid race training app',
+        alt: 'Rox - Fitness & Performance Apps',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'RoxPT - Built for HYROX. Tuned for You.',
-    description: 'Your personalized HYROX training programme',
+    title: 'Rox - Fitness & Performance Apps',
+    description: 'Your complete fitness and performance ecosystem',
     images: ['/images/home.png'],
-    creator: '@RoxPT',
+    creator: '@Rox',
   },
 };
 

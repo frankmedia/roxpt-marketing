@@ -6,7 +6,6 @@ import { Flame, Play, Clock, BarChart3, Headphones, Target, Sparkles, Users, Tro
 
 export default function RoxSIM() {
   const shots = [
-    '/images/roxsim-1.png',
     '/images/roxsim-2.png',
     '/images/roxsim-3.png',
     '/images/roxsim-4.png',
@@ -23,7 +22,9 @@ export default function RoxSIM() {
           </div>
 
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
-            RoxSIM – Race Simulation Training
+            RoxSIM
+            <br />
+            Race Simulation Training
           </h1>
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
             Prepare smarter. Train harder. Perform stronger. Built for HYROX, ATHX, DEKA, Spartan and functional fitness athletes.

@@ -2,8 +2,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Flame, Clock, Mail, CheckCircle2, Heart, Wind, Sparkles } from 'lucide-react';
-import Image from 'next/image';
+import { Flame, Clock, Mail, CheckCircle2, Heart, Wind, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Home() {
@@ -11,22 +10,42 @@ export default function Home() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [appEmail, setAppEmail] = useState<{ [key: string]: string }>({});
   const [appStatus, setAppStatus] = useState<{ [key: string]: 'idle' | 'loading' | 'success' | 'error' }>({});
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
 
-  const carouselImages = [
-    '/images/home.png',
-    '/images/day1.png',
-    '/images/day1a.png',
-    '/images/circuit1.png',
-    '/images/calf.png',
-    '/images/score.png'
+  const testimonials = [
+    {
+      quote: "RoxSIM transformed my training. The race simulations are incredibly realistic and helped me shave minutes off my HYROX time.",
+      name: "Sarah M.",
+      role: "HYROX Athlete",
+      initials: "SM",
+      avatarColor: "bg-[#FFCC00]/20",
+      textColor: "text-[#FFCC00]"
+    },
+    {
+      quote: "OxyROX's breathing protocols have been a game-changer. I feel more in control during intense workouts and recover faster.",
+      name: "James D.",
+      role: "CrossFit Athlete",
+      initials: "JD",
+      avatarColor: "bg-cyan-400/20",
+      textColor: "text-cyan-400"
+    },
+    {
+      quote: "The ROXID Pass is incredible value. Having all four apps in one subscription has streamlined my entire training approach.",
+      name: "Emma L.",
+      role: "Endurance Runner",
+      initials: "EM",
+      avatarColor: "bg-pink-400/20",
+      textColor: "text-pink-400"
+    }
   ];
-  const [slide, setSlide] = useState(0);
+
+  // Auto-slide functionality
   useEffect(() => {
-    const id = setInterval(() => {
-      setSlide((s) => (s + 1) % carouselImages.length);
-    }, 3000);
-    return () => clearInterval(id);
-  }, [carouselImages.length]);
+    const interval = setInterval(() => {
+      setTestimonialIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
 
   const handleSubmit = async (e: React.FormEvent, appName: string) => {
     e.preventDefault();
@@ -266,53 +285,110 @@ export default function Home() {
             <p className="text-xl text-gray-400">A complete ecosystem of fitness and performance apps</p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 lg:gap-8 xl:gap-12 items-start px-4 md:px-8 lg:grid-cols-[220px_minmax(0,1fr)_220px] xl:grid-cols-[260px_minmax(0,1fr)_260px]">
-            <div className="space-y-6 text-center md:text-right">
-              <div className="p-6 bg-black rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all text-center md:text-right">
-                <Flame className="w-12 h-12 mb-4 text-[#FFCC00] mx-auto md:ml-auto" />
-                <h3 className="text-xl font-bold mb-2">Race Simulation</h3>
-                <p className="text-gray-400">Train like you race with realistic simulations and pacing</p>
-              </div>
-              <div className="p-6 bg-black rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all text-center md:text-right">
-                <Heart className="w-12 h-12 mb-4 text-pink-400 mx-auto md:ml-auto" />
-                <h3 className="text-xl font-bold mb-2">Cycle Optimization</h3>
-                <p className="text-gray-400">Align your training with your body&apos;s natural rhythms</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 md:px-8">
+            <div className="p-6 bg-black rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all text-center">
+              <Flame className="w-12 h-12 mb-4 text-[#FFCC00] mx-auto" />
+              <h3 className="text-xl font-bold mb-2">Race Simulation</h3>
+              <p className="text-gray-400">Train like you race with realistic simulations and pacing</p>
+            </div>
+            <div className="p-6 bg-black rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all text-center">
+              <Heart className="w-12 h-12 mb-4 text-pink-400 mx-auto" />
+              <h3 className="text-xl font-bold mb-2">Cycle Optimization</h3>
+              <p className="text-gray-400">Align your training with your body&apos;s natural rhythms</p>
+            </div>
+            <div className="p-6 bg-black rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all text-center">
+              <Wind className="w-12 h-12 mb-4 text-cyan-400 mx-auto" />
+              <h3 className="text-xl font-bold mb-2">Breathing Mastery</h3>
+              <p className="text-gray-400">Optimize your breathing for better performance and recovery</p>
+            </div>
+            <div className="p-6 bg-black rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all text-center">
+              <Sparkles className="w-12 h-12 mb-4 text-purple-400 mx-auto" />
+              <h3 className="text-xl font-bold mb-2">Stay Motivated</h3>
+              <p className="text-gray-400">Daily motivation and mindset tools to keep you on track</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-24 px-4 bg-black">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              What <span className="text-[#FFCC00]">Athletes Say</span>
+            </h2>
+            <p className="text-xl text-gray-400">Join thousands of athletes elevating their performance</p>
+          </div>
+
+          <div className="relative">
+            {/* Carousel Container */}
+            <div className="relative overflow-hidden rounded-xl">
+              <div 
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${testimonialIndex * 100}%)` }}
+              >
+                {testimonials.map((testimonial, index) => (
+                  <div 
+                    key={index}
+                    className="min-w-full px-4"
+                  >
+                    <div className="p-8 md:p-12 bg-zinc-900/50 rounded-xl border border-zinc-800">
+                      <div className="flex items-center gap-1 mb-6">
+                        {[...Array(5)].map((_, i) => (
+                          <span key={i} className="text-[#FFCC00] text-xl">★</span>
+                        ))}
+                      </div>
+                      <p className="text-gray-300 mb-6 italic text-lg md:text-xl leading-relaxed">
+                        &quot;{testimonial.quote}&quot;
+                      </p>
+                      <div className="flex items-center gap-4">
+                        <div className={`w-12 h-12 rounded-full ${testimonial.avatarColor} flex items-center justify-center`}>
+                          <span className={`${testimonial.textColor} font-bold text-lg`}>{testimonial.initials}</span>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-white text-lg">{testimonial.name}</p>
+                          <p className="text-sm text-gray-400">{testimonial.role}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div className="relative mx-auto w-full max-w-[360px] lg:max-w-[420px]">
-              {/* Phone frame */}
-              <div className="relative rounded-[32px] border border-zinc-700 bg-black p-1 shadow-[0_10px_30px_rgba(0,0,0,0.6)]">
-                {/* Notch */}
-                <div className="absolute left-1/2 -translate-x-1/2 top-0 mt-0.5 h-5 w-28 rounded-b-2xl bg-zinc-800" />
-                {/* Screen */}
-                <div className="relative rounded-[24px] overflow-hidden bg-black aspect-[390/844]">
-                  {carouselImages.map((src, i) => (
-                    <Image
-                      key={src}
-                      src={src}
-                      alt="App preview"
-                      fill
-                      sizes="(min-width: 1024px) 420px, 360px"
-                      className={`absolute inset-0 m-auto object-contain transition-opacity duration-700 ${i === slide ? 'opacity-100' : 'opacity-0'}`}
-                      priority={i === 0}
-                    />
-                  ))}
-                </div>
+            {/* Navigation Buttons */}
+            <div className="flex items-center justify-center gap-4 mt-8">
+              <button
+                onClick={() => setTestimonialIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+                className="p-2 rounded-full bg-zinc-800 hover:bg-zinc-700 text-white transition-all hover:scale-110"
+                aria-label="Previous testimonial"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              
+              {/* Dots Indicator */}
+              <div className="flex gap-2">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setTestimonialIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      index === testimonialIndex 
+                        ? 'bg-[#FFCC00] w-8' 
+                        : 'bg-zinc-600 hover:bg-zinc-500'
+                    }`}
+                    aria-label={`Go to testimonial ${index + 1}`}
+                  />
+                ))}
               </div>
-            </div>
 
-            <div className="space-y-6 text-center md:text-left">
-              <div className="p-6 bg-black rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all text-center md:text-left">
-                <Wind className="w-12 h-12 mb-4 text-cyan-400 mx-auto md:mx-0" />
-                <h3 className="text-xl font-bold mb-2">Breathing Mastery</h3>
-                <p className="text-gray-400">Optimize your breathing for better performance and recovery</p>
-              </div>
-              <div className="p-6 bg-black rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all text-center md:text-left">
-                <Sparkles className="w-12 h-12 mb-4 text-purple-400 mx-auto md:mx-0" />
-                <h3 className="text-xl font-bold mb-2">Stay Motivated</h3>
-                <p className="text-gray-400">Daily motivation and mindset tools to keep you on track</p>
-              </div>
+              <button
+                onClick={() => setTestimonialIndex((prev) => (prev + 1) % testimonials.length)}
+                className="p-2 rounded-full bg-zinc-800 hover:bg-zinc-700 text-white transition-all hover:scale-110"
+                aria-label="Next testimonial"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
             </div>
           </div>
         </div>

@@ -36,10 +36,12 @@ export default function Header() {
             </a>
           ))}
           <a 
-            href="https://my.roxpt.app/login"
-            className="px-6 py-2 bg-[#FFCC00] text-black font-bold rounded-full hover:bg-yellow-400 transition-all"
+            href="/roxid"
+            className={`px-6 py-2 bg-[#FFCC00] text-black font-bold rounded-full hover:bg-yellow-400 transition-all ${
+              pathname === '/roxid' ? 'ring-2 ring-[#FFCC00] ring-offset-2 ring-offset-black' : ''
+            }`}
           >
-            Sign In
+            RoxID
           </a>
         </nav>
         {/* Mobile menu button */}
@@ -69,11 +71,13 @@ export default function Header() {
               </a>
             ))}
             <a
-              href="https://my.roxpt.app/login"
-              className="inline-block px-6 py-3 bg-[#FFCC00] text-black font-bold rounded-full"
+              href="/roxid"
+              className={`inline-block px-6 py-3 bg-[#FFCC00] text-black font-bold rounded-full ${
+                pathname === '/roxid' ? 'ring-2 ring-[#FFCC00] ring-offset-2 ring-offset-black' : ''
+              }`}
               onClick={() => setOpen(false)}
             >
-              Sign In
+              RoxID
             </a>
           </div>
         </div>

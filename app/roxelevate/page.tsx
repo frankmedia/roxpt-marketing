@@ -16,7 +16,9 @@ export default function RoxElevate() {
           </div>
 
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-left">
-            <span className="text-purple-400">RoxElevate</span> – Your Daily Motivation
+            <span className="text-purple-400">RoxElevate</span>
+            <br />
+            Your Daily Motivation
           </h1>
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mb-8 text-left">
             Stay motivated, track your mindset, and elevate your performance with personalized motivation and mental training tools.

@@ -228,12 +228,14 @@ export default function RoxID() {
                           }
 
                           if (!response.ok) {
-                            const errorMsg = data.error || `Failed to create checkout session (${response.status})`;
-                            console.error('Checkout error:', errorMsg, data.details || '');
+                            const baseMsg = data?.error || `Failed to create checkout session (${response.status})`;
+                            const detail = data?.details ? ` ${data.details}` : '';
+                            const errorMsg = `${baseMsg}${detail}`;
+                            console.error('Checkout error:', errorMsg);
                             throw new Error(errorMsg);
                           }
 
-                          if (!data.url) {
+                          if (!data?.url) {
                             console.error('No checkout URL in response:', data);
                             throw new Error('Invalid server response. Please try again.');
                           }
@@ -244,7 +246,7 @@ export default function RoxID() {
                         } catch (error) {
                           const errorMsg = error instanceof Error 
                             ? error.message 
-                            : 'An unexpected error occurred. Please try again.';
+                            : 'Network error. Please check your connection and try again.';
                           setSubscriptionStatus('error');
                           setSubscriptionError(errorMsg);
                           console.error('Checkout error:', error);

@@ -196,12 +196,19 @@ export default function RoxID() {
                           const successUrl = `${baseUrl}/?checkout=success`;
                           const cancelUrl = `${baseUrl}/?checkout=canceled`;
 
+                          const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
                           const response = await fetch(
                             `${supabaseUrl}/functions/v1/create-checkout-session`,
                             {
                               method: 'POST',
                               headers: {
                                 'Content-Type': 'application/json',
+                                ...(anonKey
+                                  ? {
+                                      apikey: anonKey,
+                                      Authorization: `Bearer ${anonKey}`,
+                                    }
+                                  : {}),
                               },
                               body: JSON.stringify({
                                 email: userEmail.trim(),

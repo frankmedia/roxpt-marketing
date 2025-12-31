@@ -176,13 +176,19 @@ serve(async (req) => {
           }
         }
       } else {
-        // User doesn't exist - return error asking them to sign up first
-        return new Response(
-          JSON.stringify({ 
-            error: 'No account found with this email address. Please sign up for OxyROX first, then return to subscribe.' 
-          }),
-          { status: 404, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-        );
+        // User doesn't exist yet - create a new Stripe customer
+        // They can link their account later when they sign up in the app
+        const customer = await stripe.customers.create({
+          email: normalizedEmail,
+          metadata: {
+            source: 'website_subscription',
+            plan_type: planType,
+          },
+        });
+        customerId = customer.id;
+        
+        // Use email as temporary user ID
+        finalUserId = normalizedEmail;
       }
     } else {
       return new Response(

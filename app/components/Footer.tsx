@@ -15,7 +15,7 @@ export default function Footer() {
               <span className="text-lg sm:text-xl font-bold">Rox</span>
             </a>
             <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-2 sm:mb-3">
-              Your complete fitness and performance ecosystem. Four powerful apps designed to elevate your training.
+              Your complete fitness and performance ecosystem. Five powerful apps designed to elevate your training.
             </p>
             <p className="text-gray-500 text-xs">
               Developed by <span className="text-gray-400">Kettlebells Apps</span>
@@ -37,6 +37,9 @@ export default function Footer() {
               </li>
               <li>
                 <a href="/roxelevate" className="hover:text-[#FFCC00] transition-colors block">RoxElevate</a>
+              </li>
+              <li>
+                <a href="/roxpt" className="hover:text-[#FFCC00] transition-colors block">RoxPT</a>
               </li>
             </ul>
           </div>

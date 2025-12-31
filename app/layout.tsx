@@ -9,11 +9,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Rox - Fitness & Performance Apps",
-  description: "Your complete fitness and performance ecosystem. RoxSIM, RoxCycle, OxyROX, and RoxElevate - four powerful apps designed to elevate your training.",
+  description: "Your complete fitness and performance ecosystem. RoxSIM, RoxCycle, OxyROX, RoxElevate, and RoxPT - five powerful apps designed to elevate your training.",
   keywords: "fitness apps, performance apps, HYROX, training, cycle tracking, breathing exercises, motivation, workout, race, competition",
   openGraph: {
     title: "Rox - Fitness & Performance Apps",
-    description: "Your complete fitness and performance ecosystem. Four powerful apps designed to elevate your training.",
+    description: "Your complete fitness and performance ecosystem. Five powerful apps designed to elevate your training.",
     type: "website",
     locale: "en_GB",
     url: process.env.NEXT_PUBLIC_SITE_URL || 'https://roxpt-marketing.vercel.app',

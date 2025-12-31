@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Wind, Activity, Target, Timer, Zap, Sparkles, RefreshCw, Moon, Heart, Brain, CheckCircle2, Music, Filter, CreditCard, Loader2, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
 import SubscriptionFlow from '../components/SubscriptionFlow';
+import AppVersionBadge from '../components/AppVersionBadge';
 
 export default function OxyROX() {
   const [showSubscription, setShowSubscription] = useState(false);
@@ -454,9 +455,12 @@ export default function OxyROX() {
       <section className="py-12 px-4 bg-zinc-900/40">
         <div className="container mx-auto max-w-3xl text-center">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">Breathe better. Recover faster. Perform sharper.</h2>
-          <p className="text-gray-300 mb-8 text-base md:text-lg">
+          <p className="text-gray-300 mb-4 text-base md:text-lg">
             Download OxyROX and start your first session today.
           </p>
+          <div className="mb-6 flex justify-center">
+            <AppVersionBadge appId="oxyrox" showBuild={false} />
+          </div>
           <div className="flex flex-wrap justify-center gap-4">
             <a
               href="https://apps.apple.com/app/oxyrox"

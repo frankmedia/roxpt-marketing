@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Flame, Clock, Mail, CheckCircle2, Heart, Wind, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Flame, Clock, Mail, CheckCircle2, Heart, Wind, Sparkles, ChevronLeft, ChevronRight, Target } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Home() {
@@ -120,6 +120,16 @@ export default function Home() {
       icon: Sparkles,
       href: '/roxelevate',
       color: 'text-purple-400'
+    },
+    {
+      id: 'roxpt',
+      name: 'RoxPT',
+      tagline: '12-Week HYROX Preparation',
+      description: 'A comprehensive 12-week intelligent training program that automatically adapts to your performance, pushing you to be the best you can be. Built on science, powered by data.',
+      status: 'coming-soon',
+      icon: Target,
+      href: '/roxpt',
+      color: 'text-[#FFCC00]'
     }
   ];
 
@@ -145,7 +155,7 @@ export default function Home() {
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-300 mb-16 max-w-3xl mx-auto">
-            Four powerful apps designed to elevate your fitness, optimize your training, and unlock your peak performance.
+            Five powerful apps designed to elevate your fitness, optimize your training, and unlock your peak performance.
           </p>
 
           {/* Apps Grid */}
@@ -285,7 +295,7 @@ export default function Home() {
             <p className="text-xl text-gray-400">A complete ecosystem of fitness and performance apps</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 md:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 px-4 md:px-8">
             <div className="p-6 bg-black rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all text-center">
               <Flame className="w-12 h-12 mb-4 text-[#FFCC00] mx-auto" />
               <h3 className="text-xl font-bold mb-2">Race Simulation</h3>
@@ -305,6 +315,11 @@ export default function Home() {
               <Sparkles className="w-12 h-12 mb-4 text-purple-400 mx-auto" />
               <h3 className="text-xl font-bold mb-2">Stay Motivated</h3>
               <p className="text-gray-400">Daily motivation and mindset tools to keep you on track</p>
+            </div>
+            <div className="p-6 bg-black rounded-xl border border-zinc-800 hover:border-[#FFCC00]/50 transition-all text-center">
+              <Target className="w-12 h-12 mb-4 text-[#FFCC00] mx-auto" />
+              <h3 className="text-xl font-bold mb-2">HYROX Preparation</h3>
+              <p className="text-gray-400">12-week intelligent program for competition readiness</p>
             </div>
           </div>
         </div>

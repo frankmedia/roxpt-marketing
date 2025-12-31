@@ -283,3 +283,7 @@ Users can now:
 3. Manage their subscription through Stripe Customer Portal
 4. Automatic access control based on subscription status
 
+
+
+
+

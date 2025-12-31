@@ -189,37 +189,22 @@ export default function OxyROX() {
                         setSubscriptionError('');
 
                         try {
-                          const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-                          if (!supabaseUrl) {
-                            throw new Error('Supabase URL not configured');
-                          }
-
                           const baseUrl = window.location.origin;
                           const successUrl = `${baseUrl}/?checkout=success`;
                           const cancelUrl = `${baseUrl}/?checkout=canceled`;
 
-                          const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-                          const response = await fetch(
-                            `${supabaseUrl}/functions/v1/create-checkout-session`,
-                            {
-                              method: 'POST',
-                              headers: {
-                                'Content-Type': 'application/json',
-                                ...(anonKey
-                                  ? {
-                                      apikey: anonKey,
-                                      Authorization: `Bearer ${anonKey}`,
-                                    }
-                                  : {}),
-                              },
-                              body: JSON.stringify({
-                                email: userEmail.trim(),
-                                planType: 'individual',
-                                successUrl,
-                                cancelUrl,
-                              }),
-                            }
-                          );
+                          const response = await fetch('/api/checkout', {
+                            method: 'POST',
+                            headers: {
+                              'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                              email: userEmail.trim(),
+                              planType: 'individual',
+                              successUrl,
+                              cancelUrl,
+                            }),
+                          });
 
                           let data;
                           try {

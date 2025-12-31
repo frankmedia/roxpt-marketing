@@ -212,21 +212,32 @@ export default function RoxID() {
                             }
                           );
 
-                          const data = await response.json();
+                          let data;
+                          try {
+                            data = await response.json();
+                          } catch (parseError) {
+                            console.error('Failed to parse response:', parseError);
+                            throw new Error('Server response error. Please try again.');
+                          }
 
                           if (!response.ok) {
-                            throw new Error(data.error || `Failed to create checkout session: ${response.statusText}`);
+                            const errorMsg = data.error || `Failed to create checkout session (${response.status})`;
+                            console.error('Checkout error:', errorMsg, data.details || '');
+                            throw new Error(errorMsg);
                           }
 
                           if (!data.url) {
-                            throw new Error('No checkout URL returned from server');
+                            console.error('No checkout URL in response:', data);
+                            throw new Error('Invalid server response. Please try again.');
                           }
 
+                          // Success - redirect to checkout
+                          console.log('Redirecting to Stripe Checkout...');
                           window.location.href = data.url;
                         } catch (error) {
                           const errorMsg = error instanceof Error 
                             ? error.message 
-                            : 'Failed to create checkout session. Please try again.';
+                            : 'An unexpected error occurred. Please try again.';
                           setSubscriptionStatus('error');
                           setSubscriptionError(errorMsg);
                           console.error('Checkout error:', error);

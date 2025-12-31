@@ -13,6 +13,8 @@ serve(async (req) => {
   }
 
   try {
+    console.log('=== Create Checkout Session Request ===');
+    
     // Get environment variables
     const stripeSecretKey = Deno.env.get('STRIPE_SECRET_KEY');
     const stripePriceIdIndividual = Deno.env.get('STRIPE_PRICE_ID_INDIVIDUAL');
@@ -21,13 +23,40 @@ serve(async (req) => {
     const supabaseUrl = Deno.env.get('SUPABASE_URL');
     const supabaseServiceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
 
-    if (!stripeSecretKey || !stripePriceIdIndividual || !stripePriceIdRoxidPass) {
-      throw new Error('Missing Stripe configuration');
+    // Detailed configuration checks
+    if (!stripeSecretKey) {
+      console.error('❌ STRIPE_SECRET_KEY is missing');
+      return new Response(
+        JSON.stringify({ error: 'Server configuration error: Stripe secret key not configured' }),
+        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    if (!stripePriceIdIndividual) {
+      console.error('❌ STRIPE_PRICE_ID_INDIVIDUAL is missing');
+      return new Response(
+        JSON.stringify({ error: 'Server configuration error: Individual price ID not configured' }),
+        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    if (!stripePriceIdRoxidPass) {
+      console.error('❌ STRIPE_PRICE_ID_ROXID_PASS is missing');
+      return new Response(
+        JSON.stringify({ error: 'Server configuration error: RoxID Pass price ID not configured' }),
+        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
     }
 
     if (!supabaseUrl || !supabaseServiceRoleKey) {
-      throw new Error('Missing Supabase configuration');
+      console.error('❌ Supabase configuration is missing');
+      return new Response(
+        JSON.stringify({ error: 'Server configuration error: Database connection not configured' }),
+        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
     }
+
+    console.log('✅ All environment variables configured');
 
     // Import Stripe
     const Stripe = (await import('https://esm.sh/stripe@14.21.0')).default;
@@ -40,29 +69,56 @@ serve(async (req) => {
     const supabase = createClient(supabaseUrl, supabaseServiceRoleKey);
 
     // Parse request body
-    const { userId, email, planType, successUrl, cancelUrl } = await req.json();
-
-    if (!planType) {
+    let requestData;
+    try {
+      requestData = await req.json();
+    } catch (error) {
+      console.error('❌ Failed to parse request body:', error);
       return new Response(
-        JSON.stringify({ error: 'Missing planType' }),
+        JSON.stringify({ error: 'Invalid request: Could not parse JSON data' }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
-    // Must have either userId or email
-    if (!userId && !email) {
+    const { userId, email, planType, successUrl, cancelUrl } = requestData;
+    console.log('📝 Request data:', { userId: userId ? '✓' : '✗', email: email ? '✓' : '✗', planType });
+
+    // Validate required fields
+    if (!planType) {
+      console.error('❌ Missing planType in request');
       return new Response(
-        JSON.stringify({ error: 'Missing userId or email' }),
+        JSON.stringify({ error: 'Please select a subscription plan' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    if (!userId && !email) {
+      console.error('❌ Missing both userId and email');
+      return new Response(
+        JSON.stringify({ error: 'Please provide your email address' }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
 
     // Validate planType
     if (planType !== 'individual' && planType !== 'roxid_pass') {
+      console.error('❌ Invalid planType:', planType);
       return new Response(
-        JSON.stringify({ error: 'Invalid planType. Must be "individual" or "roxid_pass"' }),
+        JSON.stringify({ error: 'Invalid subscription plan selected' }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
+    }
+
+    // Validate email format if provided
+    if (email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        console.error('❌ Invalid email format:', email);
+        return new Response(
+          JSON.stringify({ error: 'Please enter a valid email address' }),
+          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
     }
 
     // Get or create Stripe customer
@@ -71,6 +127,7 @@ serve(async (req) => {
 
     // If userId is provided, use it directly
     if (userId) {
+      console.log('🔍 Looking up user by ID:', userId);
       finalUserId = userId;
       
       // Check if user exists in roxid table
@@ -81,44 +138,58 @@ serve(async (req) => {
         .single();
 
       if (userError && userError.code !== 'PGRST116') {
-        // PGRST116 is "not found" - that's okay, we'll create a new customer
-        console.error('Error fetching user:', userError);
+        console.error('❌ Database error fetching user:', userError);
+        return new Response(
+          JSON.stringify({ error: 'Unable to verify your account. Please try again.' }),
+          { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
       }
 
       if (userData?.stripe_customer_id) {
+        console.log('✅ Found existing Stripe customer');
         customerId = userData.stripe_customer_id;
       } else {
-        // User exists but no Stripe customer yet
         if (!userData) {
-          // User doesn't exist - return error
+          console.error('❌ User not found in database');
           return new Response(
-            JSON.stringify({ error: 'User account not found. Please sign up for OxyROX first.' }),
+            JSON.stringify({ error: 'Account not found. Please sign up in the app first.' }),
             { status: 404, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
           );
         }
 
         // Create new Stripe customer
-        const customer = await stripe.customers.create({
-          email: userData.email || undefined,
-          metadata: {
-            roxid: userId,
-          },
-        });
-        customerId = customer.id;
+        console.log('💳 Creating new Stripe customer for user');
+        try {
+          const customer = await stripe.customers.create({
+            email: userData.email || undefined,
+            metadata: {
+              roxid: userId,
+            },
+          });
+          customerId = customer.id;
+          console.log('✅ Stripe customer created:', customerId);
 
-        // Update user record with Stripe customer ID (only update, don't insert)
-        const { error: updateError } = await supabase
-          .from('roxid')
-          .update({ stripe_customer_id: customerId })
-          .eq('id', userId);
+          // Update user record with Stripe customer ID
+          const { error: updateError } = await supabase
+            .from('roxid')
+            .update({ stripe_customer_id: customerId })
+            .eq('id', userId);
 
-        if (updateError) {
-          console.error('Error updating user:', updateError);
+          if (updateError) {
+            console.error('⚠️  Could not save Stripe customer ID to database:', updateError);
+            // Continue anyway - customer is created in Stripe
+          }
+        } catch (stripeError) {
+          console.error('❌ Stripe customer creation failed:', stripeError);
+          return new Response(
+            JSON.stringify({ error: 'Unable to set up payment account. Please try again.' }),
+            { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          );
         }
       }
     } else if (email) {
-      // Look up user by email (check both email and auth_email fields)
       const normalizedEmail = email.toLowerCase().trim();
+      console.log('🔍 Looking up user by email:', normalizedEmail);
       
       // First try to find by email field
       let { data: userData, error: userError } = await supabase
@@ -129,6 +200,7 @@ serve(async (req) => {
 
       // If not found by email, try auth_email
       if (userError && userError.code === 'PGRST116') {
+        console.log('🔍 Email not found, trying auth_email...');
         const { data: authEmailData, error: authEmailError } = await supabase
           .from('roxid')
           .select('id, stripe_customer_id, email')
@@ -136,59 +208,75 @@ serve(async (req) => {
           .single();
 
         if (!authEmailError && authEmailData) {
+          console.log('✅ Found user by auth_email');
           userData = authEmailData;
           userError = null;
         }
       }
 
       if (userError && userError.code !== 'PGRST116') {
-        console.error('Error fetching user by email:', userError);
+        console.error('❌ Database error looking up email:', userError);
         return new Response(
-          JSON.stringify({ error: 'Error looking up user account' }),
+          JSON.stringify({ error: 'Unable to verify your account. Please try again.' }),
           { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
       }
 
       if (userData) {
-        // User exists, use their ID
+        console.log('✅ User found in database');
         finalUserId = userData.id;
         
         if (userData.stripe_customer_id) {
+          console.log('✅ Existing Stripe customer found');
           customerId = userData.stripe_customer_id;
         } else {
-          // Create Stripe customer for existing user
-          const customer = await stripe.customers.create({
-            email: userData.email || normalizedEmail,
-            metadata: {
-              roxid: finalUserId,
-            },
-          });
-          customerId = customer.id;
+          console.log('💳 Creating Stripe customer for existing user');
+          try {
+            const customer = await stripe.customers.create({
+              email: userData.email || normalizedEmail,
+              metadata: {
+                roxid: finalUserId,
+              },
+            });
+            customerId = customer.id;
+            console.log('✅ Stripe customer created:', customerId);
 
-          // Update user record with Stripe customer ID
-          const { error: updateError } = await supabase
-            .from('roxid')
-            .update({ stripe_customer_id: customerId })
-            .eq('id', finalUserId);
+            const { error: updateError } = await supabase
+              .from('roxid')
+              .update({ stripe_customer_id: customerId })
+              .eq('id', finalUserId);
 
-          if (updateError) {
-            console.error('Error updating user:', updateError);
+            if (updateError) {
+              console.error('⚠️  Could not save Stripe customer ID:', updateError);
+            }
+          } catch (stripeError) {
+            console.error('❌ Stripe customer creation failed:', stripeError);
+            return new Response(
+              JSON.stringify({ error: 'Unable to set up payment account. Please try again.' }),
+              { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+            );
           }
         }
       } else {
-        // User doesn't exist yet - create a new Stripe customer
-        // They can link their account later when they sign up in the app
-        const customer = await stripe.customers.create({
-          email: normalizedEmail,
-          metadata: {
-            source: 'website_subscription',
-            plan_type: planType,
-          },
-        });
-        customerId = customer.id;
-        
-        // Use email as temporary user ID
-        finalUserId = normalizedEmail;
+        console.log('ℹ️  New subscriber - creating Stripe customer for website signup');
+        try {
+          const customer = await stripe.customers.create({
+            email: normalizedEmail,
+            metadata: {
+              source: 'website_subscription',
+              plan_type: planType,
+            },
+          });
+          customerId = customer.id;
+          finalUserId = normalizedEmail;
+          console.log('✅ Stripe customer created for new subscriber:', customerId);
+        } catch (stripeError) {
+          console.error('❌ Stripe customer creation failed:', stripeError);
+          return new Response(
+            JSON.stringify({ error: 'Unable to set up payment account. Please try again.' }),
+            { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          );
+        }
       }
     } else {
       return new Response(
@@ -199,40 +287,84 @@ serve(async (req) => {
 
     // Select price ID based on plan type
     const priceId = planType === 'individual' ? stripePriceIdIndividual : stripePriceIdRoxidPass;
+    console.log('💰 Plan type:', planType, '| Price ID:', priceId);
 
     // Create checkout session
-    const session = await stripe.checkout.sessions.create({
-      customer: customerId,
-      mode: 'subscription',
-      line_items: [
-        {
-          price: priceId,
-          quantity: 1,
+    console.log('🛒 Creating Stripe checkout session...');
+    try {
+      const session = await stripe.checkout.sessions.create({
+        customer: customerId,
+        mode: 'subscription',
+        line_items: [
+          {
+            price: priceId,
+            quantity: 1,
+          },
+        ],
+        success_url: successUrl || `${appUrl}/?checkout=success`,
+        cancel_url: cancelUrl || `${appUrl}/?checkout=canceled`,
+        subscription_data: {
+          metadata: {
+            roxid: finalUserId,
+            plan_type: planType,
+          },
+          trial_period_days: 28,
         },
-      ],
-      success_url: successUrl || `${appUrl}/?checkout=success`,
-      cancel_url: cancelUrl || `${appUrl}/?checkout=canceled`,
-      subscription_data: {
         metadata: {
           roxid: finalUserId,
           plan_type: planType,
         },
-        trial_period_days: 28,
-      },
-      metadata: {
-        roxid: finalUserId,
-        plan_type: planType,
-      },
-    });
+      });
 
-    return new Response(
-      JSON.stringify({ url: session.url }),
-      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+      console.log('✅ Checkout session created successfully:', session.id);
+      console.log('🔗 Checkout URL:', session.url);
+
+      return new Response(
+        JSON.stringify({ url: session.url }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    } catch (stripeError) {
+      console.error('❌ Failed to create Stripe checkout session:', stripeError);
+      
+      // Provide specific error messages for common Stripe errors
+      let errorMessage = 'Unable to create checkout session. Please try again.';
+      
+      if (stripeError.type === 'StripeInvalidRequestError') {
+        if (stripeError.message.includes('price')) {
+          errorMessage = 'Invalid subscription plan configuration. Please contact support.';
+        } else if (stripeError.message.includes('customer')) {
+          errorMessage = 'Unable to verify customer account. Please try again.';
+        }
+      } else if (stripeError.type === 'StripeAPIError') {
+        errorMessage = 'Payment service temporarily unavailable. Please try again in a moment.';
+      }
+      
+      return new Response(
+        JSON.stringify({ 
+          error: errorMessage,
+          details: stripeError.message 
+        }),
+        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
   } catch (error) {
-    console.error('Error creating checkout session:', error);
+    console.error('❌ Unexpected error:', error);
+    
+    let errorMessage = 'An unexpected error occurred. Please try again.';
+    let errorDetails = error.message || 'Unknown error';
+    
+    // Handle different error types
+    if (error.name === 'TypeError') {
+      errorMessage = 'Request processing error. Please check your input and try again.';
+    } else if (error.name === 'SyntaxError') {
+      errorMessage = 'Invalid data format. Please try again.';
+    }
+    
     return new Response(
-      JSON.stringify({ error: error.message || 'Failed to create checkout session' }),
+      JSON.stringify({ 
+        error: errorMessage,
+        details: errorDetails
+      }),
       { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   }

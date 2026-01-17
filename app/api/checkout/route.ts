@@ -15,9 +15,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const stripe = new Stripe(stripeSecretKey, {
-      apiVersion: '2024-11-20.acacia',
-    });
+    const stripe = new Stripe(stripeSecretKey);
 
     const { email, planType, successUrl, cancelUrl } = await req.json();
 
@@ -61,4 +59,5 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }
+
 

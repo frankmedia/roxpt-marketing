@@ -74,3 +74,5 @@ Backend variables are set in Supabase, not Vercel.
 
 
 
+
+

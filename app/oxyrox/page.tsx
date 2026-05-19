@@ -464,24 +464,22 @@ export default function OxyROX() {
             Download OxyROX and start your first session today.
           </p>
           <div className="mb-6 flex justify-center">
-            <AppVersionBadge appId="oxyrox" showBuild={false} />
+            <AppVersionBadge appId="oxyrox" platform="ios" showBuild={false} />
           </div>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex justify-center">
             <a
-              href="https://apps.apple.com/app/oxyrox"
+              href="https://apps.apple.com/app/oxyrox-train-your-breath/id6757100082"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-8 py-4 bg-cyan-500 text-white text-lg font-bold rounded-full hover:bg-cyan-600 transition-all transform hover:scale-105"
+              title="Download on the App Store"
+              className="flex justify-center items-center px-4 bg-zinc-900 rounded-full hover:bg-zinc-800 transition-all"
             >
-              Download on App Store
-            </a>
-            <a
-              href="https://play.google.com/store/apps/details?id=com.oxyrox"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-8 py-4 bg-cyan-500 text-white text-lg font-bold rounded-full hover:bg-cyan-600 transition-all transform hover:scale-105"
-            >
-              Get it on Google Play
+              <img
+                width="220"
+                src="https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/00f3d09f-0db5-49ce-b063-159e4ec36a58.svg"
+                alt="Download on App Store"
+                className="w-[220px]"
+              />
             </a>
           </div>
         </div>

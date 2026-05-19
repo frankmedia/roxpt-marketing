@@ -281,7 +281,7 @@ export default function OxyROXTerms() {
               <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg p-4">
                 <p className="text-white font-semibold mb-2">OxyROX Support</p>
                 <p className="text-gray-300">
-                  Email: <a href="mailto:support@oxyrox.com" className="text-cyan-400 hover:underline">support@oxyrox.com</a>
+                  Email: <a href="mailto:support@roxpt.app" className="text-cyan-400 hover:underline">support@roxpt.app</a>
                 </p>
               </div>
             </div>
@@ -304,4 +304,5 @@ export default function OxyROXTerms() {
     </main>
   );
 }
+
 

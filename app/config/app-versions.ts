@@ -26,7 +26,7 @@ export const appVersions: Record<string, AppVersion> = {
     ios: {
       version: '1.0.0', // Update from App Store Connect
       build: '1', // Update from App Store Connect
-      appStoreUrl: 'https://apps.apple.com/app/oxyrox',
+      appStoreUrl: 'https://apps.apple.com/app/oxyrox-train-your-breath/id6757100082',
       lastUpdated: new Date().toISOString(),
     },
     android: {

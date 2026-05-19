@@ -106,9 +106,10 @@ export default function Home() {
       name: 'OxyROX',
       tagline: 'Breathing Mastery for Performance',
       description: 'Master your breathing during running, exercises, and before races. Optimize oxygen intake and control for peak performance.',
-      status: 'coming-soon',
+      status: 'live',
       icon: Wind,
       href: '/oxyrox',
+      appStoreUrl: 'https://apps.apple.com/app/oxyrox-train-your-breath/id6757100082',
       color: 'text-cyan-400'
     },
     {
@@ -215,19 +216,21 @@ export default function Home() {
                             className="w-[180px]"
                           />
                         </a>
-                        <a 
-                          href={app.playStoreUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex justify-center items-center px-3 bg-black rounded-xl hover:bg-zinc-800 transition-all"
-                        >
-                          <img 
-                            width="180" 
-                            src="https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/9b92921f-27ed-4beb-831b-e91058b0cdfb.svg" 
-                            alt="Get it on Google Play"
-                            className="w-[180px]"
-                          />
-                        </a>
+                        {app.playStoreUrl && (
+                          <a 
+                            href={app.playStoreUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex justify-center items-center px-3 bg-black rounded-xl hover:bg-zinc-800 transition-all"
+                          >
+                            <img 
+                              width="180" 
+                              src="https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/9b92921f-27ed-4beb-831b-e91058b0cdfb.svg" 
+                              alt="Get it on Google Play"
+                              className="w-[180px]"
+                            />
+                          </a>
+                        )}
                       </div>
                       
                       <Link 
